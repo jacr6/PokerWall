@@ -1,15 +1,15 @@
 // ignore_for_file: import_of_legacy_library_into_null_safe
 
 import 'package:flutter/material.dart';
+import '../../../index.dart';
 import 'index.dart';
-import 'package:naver_epv_tat/index.dart';
 import 'package:get/get.dart';
 import 'package:sweetalert/sweetalert.dart';
 
-class ForgotController extends GetxController {
-  ForgotController();
+class SelectController extends GetxController {
+  SelectController();
 
-  final state = ForgotState();
+  final state = SelectState();
   void getConfirmation(ctx, msg, success) {
     return SweetAlert.show(ctx,
         curve: ElasticInCurve(),
@@ -24,12 +24,12 @@ class ForgotController extends GetxController {
     });
   }
 
-  Future<void> onForgot(ctx, String email) async {
+  Future<void> onSelect(ctx, String email) async {
     state.email = email;
 
     var res = await fetchHandler(kDefaultSchema, kDefaultServer,
         kDefaultServerPort, kDefaultConnectPath, 'POST', {
-      "state": "forgot",
+      "state": "Select",
       "data": {"email": state.email}
     });
 

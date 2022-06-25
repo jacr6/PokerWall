@@ -1,7 +1,7 @@
 // ignore_for_file: non_constant_identifier_names, prefer_function_declarations_over_variables
-import 'package:get/get.dart'; 
+import 'package:get/get.dart';
 
-import 'package:naver_epv_tat/index.dart';
+import '../../index.dart';
 
 bool isFirstLaunch = true;
 var defaultToken;
@@ -14,6 +14,7 @@ var pageList = [];
 var searcherHeader = Rx([]);
 var searcherDetail = Rx([]);
 var searchResult = Rx([]);
+
 // ignore: mixin_inherits_from_not_object
 class Context {
   void set_context(key, value) {

@@ -1,8 +1,11 @@
 // ignore_for_file: unused_local_variable, prefer_function_declarations_over_variables, unnecessary_null_comparison
 
 import 'package:flutter/material.dart';
-import 'package:naver_epv_tat/index.dart';
+
 import 'package:get/get.dart';
+
+import '../../../index.dart';
+import '../../index.dart';
 
 // ignore: must_be_immutable
 class FormCatalogueWidget extends StatelessWidget {

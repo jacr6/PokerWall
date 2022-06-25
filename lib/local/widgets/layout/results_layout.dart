@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:naver_epv_tat/index.dart';
+
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+
+import '../../../index.dart';
 
 class ResultsLayoutWidget extends StatefulWidget {
   const ResultsLayoutWidget({Key? key, this.child, this.text})

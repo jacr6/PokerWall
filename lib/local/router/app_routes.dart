@@ -15,15 +15,10 @@ List<dynamic> routes = [
       transition: Transition.zoom,
       binding: SplashBinding()),
   PRegistry(
-      name: '/Signin',
-      page: () => const SigninPage(),
+      name: '/Select',
+      page: () => const SelectPage(),
       transition: Transition.zoom,
-      binding: SigninBinding()),
-  PRegistry(
-      name: '/Forgot',
-      page: () => const ForgotPage(),
-      transition: Transition.zoom,
-      binding: ForgotBinding()),
+      binding: SelectBinding()),
   PRegistry(
       name: '/Poll',
       page: () => PollPage(),

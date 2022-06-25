@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import '../index.dart';
 import 'package:get/get.dart';
-import 'package:naver_epv_tat/index.dart';
 
 class RoundedFormCheckbox extends StatelessWidget {
   final double left;

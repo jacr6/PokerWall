@@ -4,7 +4,7 @@ import 'common/behavior.dart' as common_behavior;
 import 'package:flutter/material.dart';
 import '../index.dart';
 import 'index.dart';
-import 'package:naver_epv_tat/index.dart';
+
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
@@ -13,7 +13,7 @@ void main() {
     HttpOverrides.global = common_behavior.MyHttpOverrides();
     WidgetsFlutterBinding.ensureInitialized();
     SystemChrome.setPreferredOrientations(
-        [DeviceOrientation.portraitUp , DeviceOrientation.portraitDown]);
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
     var pages = AppPages.pages;
     PRegistry registry =

@@ -1,4 +1,4 @@
-library signin;
+library policies;
 
 export './state.dart';
 export './controller.dart';

@@ -1,6 +1,7 @@
 // Other s
-import 'package:naver_epv_tat/common/com/index.dart';
-import 'package:naver_epv_tat/index.dart';
+import 'package:hnog_pokerwall/common/com/index.dart';
+
+import '../../index.dart';
 
 //  ██████╗ █████╗ ██╗      █████╗ ████████╗ ██████╗  ██████╗
 // ██╔════╝██╔══██╗██║     ██╔══██╗╚══██╔══╝██╔═══██╗██╔════╝
@@ -171,7 +172,7 @@ List<Map<String, dynamic>> getMemoryChild(name, field, description,
 
   return output;
 }
- 
+
 /// ## getCatalogDescription
 /// *__Method to get a catalog description__*
 ///

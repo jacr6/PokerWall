@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:naver_epv_tat/index.dart';
+
+import '../../../index.dart';
 
 class CustomFormLabelWidget extends StatelessWidget {
   const CustomFormLabelWidget(

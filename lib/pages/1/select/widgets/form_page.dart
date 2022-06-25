@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import '../index.dart';
-import 'index.dart';
-import 'package:naver_epv_tat/index.dart';
 import 'package:get/get.dart';
 
-class ForgotFormPage extends GetView<StatelessWidget> {
-  ForgotFormPage({
+import '../../../../index.dart';
+import 'index.dart';
+
+class SelectFormPage extends GetView<StatelessWidget> {
+  SelectFormPage({
     Key? key,
     this.ctrl,
   }) : super(key: key);
   final _formKey = GlobalKey<FormState>();
-  final ForgotController? ctrl;
+  final SelectController? ctrl;
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -21,7 +21,7 @@ class ForgotFormPage extends GetView<StatelessWidget> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(height: kDefaultPadding * 15),
-              ForgotForm(formKey: _formKey, state: ctrl!.state),
+              SelectForm(formKey: _formKey, state: ctrl!.state),
               SizedBox(height: kDefaultPadding * 1),
               SizedBox(
                 child: RoundedFormButton(
@@ -34,7 +34,7 @@ class ForgotFormPage extends GetView<StatelessWidget> {
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       _formKey.currentState!.save();
-                      ctrl!.onForgot(context, ctrl!.state.email);
+                      ctrl!.onSelect(context, ctrl!.state.email);
                     }
                   },
                 ),

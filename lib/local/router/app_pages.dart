@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:naver_epv_tat/pages/index.dart';
+import 'package:hnog_pokerwall/pages/index.dart';
 part './app_routes.dart';
 
 abstract class AppPages {

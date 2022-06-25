@@ -1,7 +1,9 @@
 // ignore_for_file:: file_names
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:naver_epv_tat/index.dart';
+
+import '../../index.dart';
+import '../index.dart';
 
 /// ## fetchHandler
 /// *__Method Handler to fetch methods from REST API__*

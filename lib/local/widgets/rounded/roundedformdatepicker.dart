@@ -2,7 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:intl/intl.dart';
-import 'package:naver_epv_tat/index.dart';
+
+import '../../../index.dart';
 
 class RoundedFormDatepicker extends StatelessWidget {
   final double left;

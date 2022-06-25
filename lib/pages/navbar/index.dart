@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:naver_epv_tat/index.dart';
+
+import '../../index.dart';
 
 // ignore: must_be_immutable
 class NavBarWidget extends StatelessWidget {

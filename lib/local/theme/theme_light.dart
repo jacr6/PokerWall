@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:naver_epv_tat/index.dart';
+
+import '../index.dart';
 
 final ThemeData lightTheme = ThemeData(
   primaryColor: Colors.blueAccent,

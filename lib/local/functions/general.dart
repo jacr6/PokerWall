@@ -4,13 +4,12 @@ import 'dart:convert';
 import 'package:accordion/accordion.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
-import 'package:naver_epv_tat/pages/2/poll/widgets/index.dart';
+import 'package:intl/intl.dart'; 
 import 'package:sweetalert/sweetalert.dart';
 import '../index.dart';
 import 'index.dart';
-import 'package:naver_epv_tat/index.dart';
-import 'package:naver_epv_tat/pages/index.dart';
+
+import 'package:hnog_pokerwall/pages/index.dart';
 import 'package:yaml/yaml.dart';
 
 //  ██████╗ ███████╗███╗   ██╗███████╗██████╗  █████╗ ██╗
@@ -131,80 +130,11 @@ checkMarkComplete(String code) {
   return Rx(Icon(Icons.close, color: Colors.red)).value;
 }
 
-
-getQuestionData(id){
-  return preguntas.firstWhere((element) => element["code"]==id);
+getQuestionData(id) {
+  return preguntas.firstWhere((element) => element["code"] == id);
 }
 
-updateData() {
-  secciones = findCatalog("SECCION");
-  marcas = findCatalog("MARCA");
-  tipos = findCatalog("TIPO");
-  preguntas = findCatalog("PREGUNTA");
-  clientes = findCatalog("CLIENTE");
-  // canales.value = findCatalog("CANAL");
-  formattedDate = DateFormat('yyyy-MM-dd – kk:mm').format(DateTime.now());
-  seccionWidgets = <Widget>[];
-
-  for (var seccion in secciones) {
-    seccionWidgets.add(CustomTitleWidget(
-      fontSize: 40,
-      fontWeight: FontWeight.bold,
-      label: seccion["description"],
-    ));
-    var secCatalog = toCatalog(seccion);
-    for (var marca in marcas) {
-      var marcCatalog = toCatalog(marca);
-      if (marcCatalog.relation["sections"].contains(secCatalog.description)) {
-        seccionWidgets.add(CustomTitleWidget(
-          fontSize: 30,
-          fontWeight: FontWeight.bold,
-          label: marca["description"],
-        ));
-      }
-      var tipoSecctions = <AccordionSection>[];
-      var marcaAcordeon = Accordion(
-          accordionId: "${secCatalog.code}-${marcCatalog.code}",
-          headerBackgroundColor: Colors.grey,
-          maxOpenSections: 1,
-          leftIcon: Obx(() =>
-              checkMarkComplete("${secCatalog.code}-${marcCatalog.code}")),
-          children: tipoSecctions);
-      if (marcCatalog.relation["sections"].contains(secCatalog.description)) {
-        seccionWidgets.add(marcaAcordeon);
-      }
-      for (var tipo in tipos) {
-        var tipCatalog = toCatalog(tipo);
-        var preguntaWidget = <Widget>[];
-        var preguntaGroup = Column(
-          children: preguntaWidget,
-        );
-        var tipoSection = AccordionSection(
-            isOpen: false,
-            header: Text(tipCatalog.description,
-                style: TextStyle(color: Colors.white, fontSize: 17)),
-            content: preguntaGroup);
-        if (tipCatalog.relation["trademark"] == marcCatalog.description &&
-            tipCatalog.relation["sections"].contains(secCatalog.description)) {
-          tipoSecctions.add(tipoSection);
-        }
-        for (var pregunta in preguntas) {
-          var qCatalog = toCatalog(pregunta);
-          var rule = true;
-          rule = rule && (qCatalog.relation["type"] == tipCatalog.description);
-          rule = rule &&
-              (qCatalog.relation["trademark"] == marcCatalog.description);
-          rule =
-              rule && (qCatalog.relation["section"] == secCatalog.description);
-          if (rule) {
-            preguntaWidget.add(QuestionWidget(qCatalog: qCatalog));
-          }
-        }
-      }
-    }
-  }
-}
-
+ 
 validateRequired() {
   List questions = globalctx.memory["questions"].keys.toSet().toList();
   var rule = globalctx.memory["questions"].isNotEmpty;
@@ -223,28 +153,7 @@ validateRequired() {
   return rule;
 }
 
-validateToSend(context) {
-  // showCustomDialog(context, ConfirmationWidget(), "",
-  //     buttonColor: Colors.white, height: 0.25);
-  // return;
-  var rule = true;
-  rule = rule && validateRequired();
-  rule = rule && (currentCustomer.value.isNotEmpty);
-  rule = rule && (currentChannel.value.isNotEmpty);
-  if (rule) {
-    showCustomDialog(context, ConfirmationWidget(), "",
-        buttonColor: Colors.white, height: 0.25);
-  } else {
-    SweetAlert.show(context,
-        curve: ElasticInCurve(),
-        title: "Debe Copletar la evaluación!!!!",
-        style: SweetAlertStyle.error, onPress: (bool isConfirm) {
-      Get.close(1);
-      return false;
-    });
-  }
-}
-
+ 
 sendPoll() {
   try {
     var payload = globalctx.memory.value.toString();

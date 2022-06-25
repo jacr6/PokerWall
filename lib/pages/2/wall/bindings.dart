@@ -2,9 +2,9 @@ import 'package:get/get.dart';
 
 import 'controller.dart';
 
-class PollBinding implements Bindings {
+class WallBinding implements Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<PollController>(() => PollController());
+    Get.lazyPut<WallController>(() => WallController());
   }
 }

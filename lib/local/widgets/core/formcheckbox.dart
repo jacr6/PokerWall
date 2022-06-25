@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../index.dart';
-import 'package:naver_epv_tat/index.dart';
+
 import 'package:get/get.dart';
 
 // ignore: must_be_immutable

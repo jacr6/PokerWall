@@ -1,7 +1,8 @@
 // ignore_for_file: must_be_immutable, unnecessary_null_comparison
 import 'package:flutter/material.dart';
 import 'package:multiselect_formfield/multiselect_formfield.dart';
-import 'package:naver_epv_tat/index.dart';
+
+import '../../../index.dart';
 
 class RoundedFormMultiDropdown extends StatelessWidget {
   final double left;

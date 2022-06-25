@@ -1,8 +1,10 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:naver_epv_tat/index.dart';
+
 import 'package:flutter/services.dart';
+
+import '../../../index.dart';
 
 class RoundedFormTextField extends StatelessWidget {
   final bool disabled;

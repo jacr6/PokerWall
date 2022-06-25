@@ -14,3 +14,4 @@ var currentCustomer = Rx("");
 var currentChannel = Rx("");
 var seccionWidgets = <Widget>[];
 String formattedDate = DateFormat('yyyy-MM-dd – kk:mm').format(DateTime.now());
+var isRunning = false.obs;

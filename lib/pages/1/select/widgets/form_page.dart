@@ -22,12 +22,12 @@ class SelectFormPage extends GetView<StatelessWidget> {
             Image.asset("assets/images/1x/logo.png"),
             Wrap(
               children: [
-                TextButton(
+                ElevatedButton(
                     onPressed: () {
                       Get.toNamed("/Admin");
                     },
                     child: Text("Admin")),
-                TextButton(
+                ElevatedButton(
                     onPressed: () {
                       Get.toNamed("/Wall");
                     },

@@ -110,12 +110,8 @@ flutter:
   #       - lib/assets
   assets:
     - assets/
-    - assets/data/
     - assets/images/
-    - assets/images/1x/
-    - assets/images/0.5x/
-    - assets/images/0.75x/
-
+    - assets/images/1x/ 
   generate: true
   uses-material-design: true
   # fonts:

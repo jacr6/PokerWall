@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../../index.dart';
-import 'index.dart';
 import 'package:get/get.dart';
 import 'widgets/index.dart';
 
@@ -21,7 +20,7 @@ GetBuilder<SelectController> _buildSelectFormPage(
   return GetBuilder<SelectController>(
     id: 'Select_form_page',
     builder: (controller) => ContentLayoutWidget(
-        background: "assets/images/1x/home.png",
+        background: "assets/images/1x/resume.png",
         child: SelectFormPage(ctrl: controller),
         text: ''),
   );

@@ -20,8 +20,13 @@ List<dynamic> routes = [
       transition: Transition.zoom,
       binding: SelectBinding()),
   PRegistry(
-      name: '/Poll',
-      page: () => PollPage(),
+      name: '/Wall',
+      page: () => WallPage(),
       transition: Transition.zoom,
-      binding: PollBinding()),
+      binding: WallBinding()),
+  PRegistry(
+      name: '/Admin',
+      page: () => AdminPage(),
+      transition: Transition.zoom,
+      binding: AdminBinding()),
 ];

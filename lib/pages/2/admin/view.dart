@@ -12,7 +12,12 @@ class AdminPage extends GetView<AdminController> {
     return ContentLayoutWidget(
         background: "assets/images/1x/resume.png",
         child: Stack(
-          children: [],
+          children: [Container(child: Column(
+            children: [
+              Text("Admin"),
+              Custom
+            ],
+          ))],
         ),
         text: '');
   }

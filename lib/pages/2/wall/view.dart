@@ -12,7 +12,7 @@ class WallPage extends GetView<WallController> {
     return ContentLayoutWidget(
         background: "assets/images/1x/resume.png",
         child: Stack(
-          children: [],
+          children: [Text("Wall")],
         ),
         text: '');
   }

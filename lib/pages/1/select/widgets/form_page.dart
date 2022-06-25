@@ -13,34 +13,28 @@ class SelectFormPage extends GetView<StatelessWidget> {
   final SelectController? ctrl;
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: SafeArea(
-        child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(height: kDefaultPadding * 15),
-              SelectForm(formKey: _formKey, state: ctrl!.state),
-              SizedBox(height: kDefaultPadding * 1),
-              SizedBox(
-                child: RoundedFormButton(
-                  height: 0.06,
-                  fontSize: 6,
-                  color: Color.fromARGB(255, 115, 115, 115),
-                  textColor: Colors.white70,
-                  fontWeight: FontWeight.bold,
-                  label: "Send",
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      _formKey.currentState!.save();
-                      ctrl!.onSelect(context, ctrl!.state.email);
-                    }
-                  },
-                ),
-              ),
-            ],
-          ),
+    return SafeArea(
+      child: SingleChildScrollView(
+        padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
+        child: Column(
+          children: [
+            SizedBox(height: MediaQuery.of(context).size.height * 0.15),
+            Image.asset("assets/images/1x/logo.png"),
+            Wrap(
+              children: [
+                TextButton(
+                    onPressed: () {
+                      Get.toNamed("/Admin");
+                    },
+                    child: Text("Admin")),
+                TextButton(
+                    onPressed: () {
+                      Get.toNamed("/Wall");
+                    },
+                    child: Text("Wall"))
+              ],
+            ),
+          ],
         ),
       ),
     );

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
@@ -10,15 +12,19 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
-  AnimationController? _controller;
-
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      duration: const Duration(seconds: (1)),
-      vsync: this,
-    );
+
+    Timer scheduleTimeout([int milliseconds = 3000]) =>
+        Timer(Duration(milliseconds: milliseconds), handleTimeout);
+    scheduleTimeout();
+  }
+
+  void handleTimeout() {
+    // callback function
+    Get.toNamed("/Select");
+    // Do some work.
   }
 
   @override
@@ -26,19 +32,7 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
     return WillPopScope(
         onWillPop: () async => false,
         child: Scaffold(
-          body: Lottie.asset(
-            'assets/splash_lottie.json',
-            controller: _controller,
-            height: MediaQuery.of(context).size.height * 1,
-            repeat: true,
-            reverse: true,
-            animate: true,
-            onLoaded: (composition) {
-              _controller
-                ?..duration = composition.duration
-                ..forward().whenComplete(() => Get.toNamed("/Signin"));
-            },
-          ),
+          body: Image.asset("assets/images/1x/splash.gif"),
         ));
   }
 }

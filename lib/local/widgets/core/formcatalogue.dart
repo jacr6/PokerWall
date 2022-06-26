@@ -38,8 +38,10 @@ class FormCatalogueWidget extends StatelessWidget {
         return DropdownButtonHideUnderline(
           child: DropdownButtonFormField(
             style: KTextSytle(
+                    color: Colors.black,
                     context: context,
-                    fontSize: value == null ? fontSize : fontSize * 0.8,
+                    fontSize:
+                        value == null ? fontSize : fontSize * 0.8 * isMobile,
                     fontWeight:
                         value == null ? FontWeight.normal : FontWeight.bold)
                 .getStyle(),
@@ -49,8 +51,10 @@ class FormCatalogueWidget extends StatelessWidget {
             disabledHint: Text(
               "data",
               style: KTextSytle(
+                      color: Colors.black,
                       context: context,
-                      fontSize: value == null ? fontSize : fontSize * 0.8,
+                      fontSize:
+                          value == null ? fontSize : fontSize * 0.8 * isMobile,
                       fontWeight:
                           value == null ? FontWeight.normal : FontWeight.bold)
                   .getStyle(),
@@ -60,8 +64,10 @@ class FormCatalogueWidget extends StatelessWidget {
               filled: false,
               hintText: hintText,
               hintStyle: KTextSytle(
+                      color: Colors.black,
                       context: context,
-                      fontSize: value == null ? fontSize : fontSize * 0.8,
+                      fontSize:
+                          value == null ? fontSize : fontSize * 0.8 * isMobile,
                       fontWeight:
                           value == null ? FontWeight.normal : FontWeight.bold)
                   .getStyle(),

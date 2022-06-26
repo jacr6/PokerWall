@@ -10,13 +10,13 @@ class CustomFormDropDownFieldWidget extends StatelessWidget {
       required this.data,
       this.label = '',
       this.hintText,
-      this.width = 0.2,
+      this.width = 0.3,
       this.height = 0.05,
       this.value = "0",
       required this.onSaved,
       required this.onChanged,
       this.validator,
-      this.fontSize = 32})
+      this.fontSize = 10})
       : super(key: key);
 
   final String label;
@@ -34,7 +34,7 @@ class CustomFormDropDownFieldWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(0.0),
       child: Row(
         children: [
           CustomFormLabelWidget(

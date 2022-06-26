@@ -43,7 +43,7 @@ class RoundedFormDropdown extends StatelessWidget {
       height: MediaQuery.of(context).size.height * height,
       padding: EdgeInsets.only(left: left, top: top),
       decoration: BoxDecoration(
-          color: Colors.grey, borderRadius: BorderRadius.circular(50)),
+          color: Colors.blue, borderRadius: BorderRadius.circular(50)),
       child: FormCatalogueWidget(
           fontSize: fontSize,
           validator: validator,

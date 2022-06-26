@@ -1,14 +1,11 @@
-import 'package:countdown_progress_indicator/countdown_progress_indicator.dart';
 import 'package:flutter/material.dart';
-import '../../../index.dart'; 
+import '../../../index.dart';
 import 'package:get/get.dart';
 import 'widgets/index.dart';
 
-
 class AdminPage extends GetView<AdminController> {
-  AdminPage({Key? key}) : super(key: key);
+  const AdminPage({Key? key}) : super(key: key);
 
-  final _controller = CountDownController();
   Widget _buildView(BuildContext context) {
     return ContentLayoutWidget(
         background: "assets/images/1x/fondo.jpg",
@@ -23,9 +20,8 @@ class AdminPage extends GetView<AdminController> {
                     width: MediaQuery.of(context).size.width * 0.5,
                     height: MediaQuery.of(context).size.height * 0.5,
                   ),
-                  Counter(controller: _controller),
-                  KeyPad(controller: _controller),
-                  Parameters(controller: _controller),
+                  KeyPad(),
+                  Parameters(),
                 ],
               ))
             ],
@@ -47,5 +43,3 @@ class AdminPage extends GetView<AdminController> {
     );
   }
 }
-
-

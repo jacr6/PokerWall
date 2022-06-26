@@ -1,3 +1,4 @@
+import 'package:countdown_progress_indicator/countdown_progress_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -20,3 +21,4 @@ var acumulado = "".obs;
 var mesa = "".obs;
 var silla = "".obs;
 var mano = "".obs;
+final countDownController = CountDownController();

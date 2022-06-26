@@ -6,11 +6,7 @@ import '../../../../index.dart';
 class Counter extends StatelessWidget {
   const Counter({
     Key? key,
-    required CountDownController controller,
-  })  : _controller = controller,
-        super(key: key);
-
-  final CountDownController _controller;
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +14,8 @@ class Counter extends StatelessWidget {
       height: MediaQuery.of(context).size.height * 0.5,
       width: MediaQuery.of(context).size.width * 0.5,
       child: CountDownProgressIndicator(
-        autostart: isRunning.value,
-        controller: _controller,
+        autostart: true,
+        controller: countDownController,
         valueColor: Colors.red,
         backgroundColor: Colors.blue,
         initialPosition: 0,

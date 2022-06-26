@@ -1,3 +1,5 @@
+
+
 import 'package:countdown_progress_indicator/countdown_progress_indicator.dart';
 import 'package:flutter/material.dart';
 
@@ -7,7 +9,11 @@ import 'index.dart';
 class Parameters extends StatelessWidget {
   const Parameters({
     Key? key,
-  }) : super(key: key);
+    required CountDownController controller,
+  })  : _controller = controller,
+        super(key: key);
+
+  final CountDownController _controller;
 
   @override
   Widget build(BuildContext context) {

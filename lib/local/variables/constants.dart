@@ -2,8 +2,7 @@
 
 import 'package:flutter/material.dart';
 import '../index.dart';
-
-import 'package:flutter_html/shims/dart_ui_real.dart';
+ 
 import 'package:google_fonts/google_fonts.dart';
 
 //SERVER DATA

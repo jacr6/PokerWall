@@ -394,48 +394,7 @@ List<DataColumn> getHeader(context, data, columns) {
 
   return header;
 }
-
-/// ## getDataSource
-/// *__Method to get a Calendar dataSource__*
-///
-///### Uses:
-/// ```dart
-///     dataSource: MeetingDataSource(getDataSource(
-///                          "${row['quote_itinerary']}"
-///                              .replaceAll("[", " ")
-///                              .replaceAll("]", " "))),
-/// ```
-/// @return List
-///
-List<Meeting> getDataSource(data) {
-  List dataList = [];
-  final List<Meeting> meetings = <Meeting>[];
-
-  for (var i = 0; i < 3; i++) {
-    dataList = [...dataList, ...data.split(',').toList()];
-  }
-  var count = 0;
-  var now = DateTime.now();
-  var firstOfMonth = DateTime(now.year, now.month, 1);
-  var firstMonday = firstOfMonth
-      .add(Duration(days: (7 - (firstOfMonth.weekday - DateTime.monday)) % 7));
-  var current = firstMonday;
-  for (var day in dataList) {
-    if (day == '' || day == " ") {
-      count++;
-      continue;
-    }
-
-    if (current.month == now.month) {
-      var nextDay = current.add(Duration(days: count));
-      meetings
-          .add(Meeting(day, nextDay, nextDay, const Color(0xFF0F8644), true));
-      current = nextDay;
-    }
-    count++;
-  }
-  return meetings;
-}
+ 
 
 /// ## getTimeStringFromDouble
 /// *__Method to get a time value in string format from a decimal value__*

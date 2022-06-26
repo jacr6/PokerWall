@@ -6,4 +6,3 @@ export './0/splash/index.dart';
 export './1/select/index.dart';
 export './2/wall/index.dart';
 export './2/admin/index.dart';
-export './navbar/index.dart';

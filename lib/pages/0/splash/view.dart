@@ -1,8 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:lottie/lottie.dart';
+import 'package:get/get.dart'; 
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -16,9 +15,9 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
   void initState() {
     super.initState();
 
-    Timer scheduleTimeout([int milliseconds = 3000]) =>
-        Timer(Duration(milliseconds: milliseconds), handleTimeout);
-    scheduleTimeout();
+    // Timer scheduleTimeout([int milliseconds = 3000]) =>
+    //     Timer(Duration(milliseconds: milliseconds), handleTimeout);
+    // scheduleTimeout();
   }
 
   void handleTimeout() {

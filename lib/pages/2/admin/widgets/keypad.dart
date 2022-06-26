@@ -1,12 +1,17 @@
+// ignore_for_file: avoid_web_libraries_in_flutter
+
+import 'package:countdown_progress_indicator/countdown_progress_indicator.dart';
 import 'package:duration_picker/duration_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'dart:js' as js;
+import 'dart:io'
+    if (dart.library.html) 'dart:html'
+    if (dart.library.js) 'dart:js' as window;
 import '../../../../index.dart';
 
 class KeyPad extends StatelessWidget {
-  const KeyPad({Key? key}) : super(key: key);
-
+  KeyPad({Key? key}) : super(key: key);
+ 
   @override
   Widget build(BuildContext context) {
     return Obx(() {
@@ -31,10 +36,11 @@ class KeyPad extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
+            
               if (isRunning.value) {
-                countDownController.pause();
+                countDownController.value.pause();
               } else {
-                countDownController.resume();
+                countDownController.value.resume();
               }
 
               isRunning.value = !isRunning.value;
@@ -43,9 +49,9 @@ class KeyPad extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              countDownController.restart(
+              countDownController.value.restart(
                   duration: duration.value.inSeconds, initialPosition: 0);
-              countDownController.pause();
+              countDownController.value.pause();
               log("AQUI");
               isRunning.value = false;
             },
@@ -53,7 +59,7 @@ class KeyPad extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              // js.context
+              // window.context
               //     .callMethod('open', ['/#/Wall', '_blank', 'fullscreen=yes']);
               isRunning.value = true;
             },

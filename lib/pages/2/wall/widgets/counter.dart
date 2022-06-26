@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 import '../../../../index.dart';
 
 class Counter extends StatelessWidget {
-  const Counter({
+   Counter({
     Key? key,
-  }) : super(key: key);
-
+    required this.controller
+  }) : super(key: key); 
+  CountDownController? controller;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -15,7 +16,7 @@ class Counter extends StatelessWidget {
       width: MediaQuery.of(context).size.width * 0.5,
       child: CountDownProgressIndicator(
         autostart: true,
-        controller: countDownController,
+        controller: controller,
         valueColor: Colors.red,
         backgroundColor: Colors.blue,
         initialPosition: 0,

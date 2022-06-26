@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import '../../index.dart';
+import '../../pages/2/wall/widgets/counter.dart';
 
 var secciones = findCatalog("SECCION");
 var marcas = findCatalog("MARCA");
@@ -21,4 +22,7 @@ var acumulado = "".obs;
 var mesa = "".obs;
 var silla = "".obs;
 var mano = "".obs;
-final countDownController = CountDownController();
+var countDownController = Rx(CountDownController());
+var counter = Rx(Obx(() => Counter(
+      controller: countDownController.value,
+    )));

@@ -17,7 +17,7 @@ class Parameters extends StatelessWidget {
       cartas.add(
         CustomFormDropDownFieldWidget(
             width: 0.2,
-            fontSize: 16,
+            fontSize: 5,
             hintText: "CARTA ${i + 1}",
             data: cardsCatalog,
             onSaved: (value) {},
@@ -28,70 +28,84 @@ class Parameters extends StatelessWidget {
     return Wrap(
       children: [
         CustomFormTextInput(
-            fontSize: 16,
+            fontSize: 5,
             width: 0.2,
             label: "Acumulado: ",
             initialValue: acumulado.value,
-            onFieldSubmitted: (value) {
+            onChange: (value) {
               acumulado.value = value;
+            }),
+        CustomFormTextInput(
+            fontSize: 5,
+            width: 0.2,
+            label: "Mensaje: ",
+            initialValue: mensaje.value,
+            onChange: (value) {
+              mensaje.value = value;
+            }),
+        CustomFormTextInput(
+            fontSize: 5,
+            width: 0.2,
+            label: "Tiempo: ",
+            initialValue: duration.value.inMinutes,
+            onChange: (value) {
+              duration.value = Duration(minutes: int.parse(value.toString()));
             }),
         Row(
           children: [
             CustomFormDropDownFieldWidget(
-                fontSize: 16,
+                fontSize: 5,
                 hintText: "MESA",
-                data: [
-                  {"code": 1, "description": "MESA 1"},
-                  {"code": 2, "description": "MESA 2"},
-                  {"code": 3, "description": "MESA 3"},
-                  {"code": 4, "description": "MESA 4"},
-                  {"code": 5, "description": "MESA 5"},
-                  {"code": 6, "description": "MESA 6"},
-                  {"code": 7, "description": "MESA 7"},
-                  {"code": 8, "description": "MESA 8"},
-                  {"code": 9, "description": "MESA 9"},
-                  {"code": 10, "description": "MESA 10"},
-                ],
+                data: mesaCatalog,
                 onSaved: (value) {
-                  mesa.value = value!;
+                  mesa.value = mesaCatalog
+                      .firstWhere((element) =>
+                          element["code"].toString() ==
+                          value!.toString())["description"]
+                      .toString();
                 },
                 onChanged: (value) {
-                  mesa.value = value!;
+                  mesa.value = mesaCatalog
+                      .firstWhere((element) =>
+                          element["code"].toString() ==
+                          value!.toString())["description"]
+                      .toString();
                 }),
             CustomFormDropDownFieldWidget(
-                fontSize: 16,
+                fontSize: 5,
                 hintText: "SILLA",
-                data: [
-                  {"code": 1, "description": "SILLA 1"},
-                  {"code": 2, "description": "SILLA 2"},
-                  {"code": 3, "description": "SILLA 3"},
-                  {"code": 4, "description": "SILLA 4"},
-                  {"code": 5, "description": "SILLA 5"},
-                  {"code": 6, "description": "SILLA 6"},
-                  {"code": 7, "description": "SILLA 7"},
-                  {"code": 8, "description": "SILLA 8"},
-                  {"code": 9, "description": "SILLA 9"},
-                  {"code": 10, "description": "SILLA 10"},
-                ],
+                data: sillaCatalog,
                 onSaved: (value) {
-                  silla.value = value!;
+                  silla.value = sillaCatalog
+                      .firstWhere((element) =>
+                          element["code"].toString() ==
+                          value!.toString())["description"]
+                      .toString();
                 },
                 onChanged: (value) {
-                  silla.value = value!;
+                  silla.value = sillaCatalog
+                      .firstWhere((element) =>
+                          element["code"].toString() ==
+                          value!.toString())["description"]
+                      .toString();
                 }),
             CustomFormDropDownFieldWidget(
-                fontSize: 16,
+                fontSize: 5,
                 hintText: "TIPO DE MANO",
-                data: [
-                  {"code": 1, "description": "MANO 1"},
-                  {"code": 2, "description": "MANO 2"},
-                  {"code": 3, "description": "MANO 3"},
-                ],
+                data: manoCatalog,
                 onSaved: (value) {
-                  mano.value = value!;
+                  mano.value = manoCatalog
+                      .firstWhere((element) =>
+                          element["code"].toString() ==
+                          value!.toString())["description"]
+                      .toString();
                 },
                 onChanged: (value) {
-                  mano.value = value!;
+                  mano.value = manoCatalog
+                      .firstWhere((element) =>
+                          element["code"].toString() ==
+                          value!.toString())["description"]
+                      .toString();
                 }),
           ],
         ),

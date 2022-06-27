@@ -10,12 +10,12 @@ class CustomFormTextInput extends StatelessWidget {
       this.width = 0.1,
       this.label = "",
       this.initialValue = "",
-      this.onFieldSubmitted})
+      this.onChange})
       : super(key: key);
   final width;
   final label;
   final initialValue;
-  final onFieldSubmitted;
+  final onChange;
   final fontSize;
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class CustomFormTextInput extends StatelessWidget {
           color: Colors.white,
           width: Get.width * width,
           child: TextFormField(
-            onFieldSubmitted: onFieldSubmitted,
+            onChanged: onChange,
             initialValue: initialValue.toString(),
             cursorColor: Colors.black54,
             style: KTextSytle(

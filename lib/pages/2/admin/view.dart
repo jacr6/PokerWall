@@ -17,8 +17,8 @@ class AdminPage extends GetView<AdminController> {
                 children: [
                   Image.asset(
                     "assets/images/1x/logo.png",
-                    width: Get.width * 0.5,
-                    height: Get.height * 0.5,
+                    width: Get.width * 0.25,
+                    height: Get.height * 0.25,
                   ),
                   KeyPad(),
                   Parameters(),

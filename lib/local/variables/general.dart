@@ -29,6 +29,35 @@ var acumulado = "0".obs;
 var mensaje = "...".obs;
 var cards = [].obs;
 var cardImages = Rx(<Widget>[]);
+var manoCatalog = [
+  {"code": 1, "description": "MANO 1"},
+  {"code": 2, "description": "MANO 2"},
+  {"code": 3, "description": "MANO 3"},
+];
+var sillaCatalog = [
+  {"code": 1, "description": "SILLA 1"},
+  {"code": 2, "description": "SILLA 2"},
+  {"code": 3, "description": "SILLA 3"},
+  {"code": 4, "description": "SILLA 4"},
+  {"code": 5, "description": "SILLA 5"},
+  {"code": 6, "description": "SILLA 6"},
+  {"code": 7, "description": "SILLA 7"},
+  {"code": 8, "description": "SILLA 8"},
+  {"code": 9, "description": "SILLA 9"},
+  {"code": 10, "description": "SILLA 10"},
+];
+var mesaCatalog = [
+  {"code": 1, "description": "MESA 1"},
+  {"code": 2, "description": "MESA 2"},
+  {"code": 3, "description": "MESA 3"},
+  {"code": 4, "description": "MESA 4"},
+  {"code": 5, "description": "MESA 5"},
+  {"code": 6, "description": "MESA 6"},
+  {"code": 7, "description": "MESA 7"},
+  {"code": 8, "description": "MESA 8"},
+  {"code": 9, "description": "MESA 9"},
+  {"code": 10, "description": "MESA 10"},
+];
 var cardsCatalog = [
   {"code": 1, "description": "Pica_1"},
   {"code": 2, "description": "Pica_2"},

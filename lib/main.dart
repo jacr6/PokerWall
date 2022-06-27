@@ -19,7 +19,7 @@ void main() async {
 
     var pages = AppPages.pages;
     PRegistry registry =
-        routes.toList().firstWhere((element) => element.name == "/Wall");
+        routes.toList().firstWhere((element) => element.name == "/Admin");
 
     runApp(GetMaterialApp(
         scrollBehavior: common_behavior.ScrollBehavior(),

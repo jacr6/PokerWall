@@ -13,7 +13,17 @@ class WallPage extends GetView<WallController> {
   );
 
   Widget _buildView(BuildContext context) {
- 
+    channel.stream.listen((data) {
+      if (data.toString().contains("acumulado")) {
+        wsChannel.value = data.toString().split(":")[1];
+      }
+      if (data.toString().contains("command")) {
+        var command = data.toString().split(":")[1];
+        if (command == "pause") {
+          countDownController.value.pause();
+        }
+      }
+    });
     return ContentLayoutWidget(
         background: "assets/images/1x/fondo.jpg",
         child: SingleChildScrollView(
@@ -28,18 +38,30 @@ class WallPage extends GetView<WallController> {
                       height: Get.height * 0.5,
                     ),
                     Obx(() {
-                      return Text(wsChannel.value);
+                      return Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Row(
+                          children: [
+                            Text("Acumulado: ",
+                                style: KTextSytle(
+                                        fontSize: (Get.width / Get.height) *
+                                            isMobile *
+                                            60,
+                                        color: Colors.white,
+                                        context: context)
+                                    .getStyle()),
+                            Text(wsChannel.value,
+                                style: KTextSytle(
+                                        fontSize: (Get.width / Get.height) *
+                                            isMobile *
+                                            60,
+                                        color: Colors.white,
+                                        context: context)
+                                    .getStyle()),
+                          ],
+                        ),
+                      );
                     }),
-                    StreamBuilder(
-                      stream: channel.stream,
-                      builder: (context, snapshot) {
-                        return Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child:
-                              Text(snapshot.hasData ? '${snapshot.data}' : 'nnnn'),
-                        );
-                      },
-                    ),
                     counter.value,
                   ],
                 );

@@ -26,4 +26,4 @@ var countDownController = Rx(CountDownController());
 var counter = Rx(Obx(() => Counter(
       controller: countDownController.value,
     )));
-var wsChannel = "NONE".obs;
+var wsChannel = "0".obs;

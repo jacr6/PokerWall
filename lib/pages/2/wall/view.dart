@@ -15,15 +15,26 @@ class WallPage extends GetView<WallController> {
   Widget _buildView(BuildContext context) {
     channel.stream.listen((data) {
       if (data.toString().contains("acumulado")) {
-        wsChannel.value = data.toString().split(":")[1];
+        acumulado.value = data.toString().split(":")[1];
       }
       if (data.toString().contains("command")) {
         var command = data.toString().split(":")[1];
         if (command == "pause") {
           countDownController.value.pause();
         }
-         if (command == "resume") {
+        if (command == "resume") {
           countDownController.value.resume();
+        }
+        if (command == "restart") {
+          countDownController.value.restart(initialPosition: 0);
+        }
+        if (command == "reset") {
+          countDownController.value.restart(initialPosition: 0);
+          countDownController.value.pause();
+        }
+        if (command == "cards") {
+          var newCards = data.toString().split(":")[2].toString().split(",");
+          cards.value = newCards;
         }
       }
     });
@@ -53,7 +64,7 @@ class WallPage extends GetView<WallController> {
                                         color: Colors.white,
                                         context: context)
                                     .getStyle()),
-                            Text(wsChannel.value,
+                            Text(acumulado.value,
                                 style: KTextSytle(
                                         fontSize: (Get.width / Get.height) *
                                             isMobile *

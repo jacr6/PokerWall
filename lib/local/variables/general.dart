@@ -18,7 +18,6 @@ var seccionWidgets = <Widget>[];
 String formattedDate = DateFormat('yyyy-MM-dd – kk:mm').format(DateTime.now());
 var isRunning = false.obs;
 var duration = Rx(Duration(hours: 0, minutes: 10));
-var acumulado = "".obs;
 var mesa = "".obs;
 var silla = "".obs;
 var mano = "".obs;
@@ -26,4 +25,5 @@ var countDownController = Rx(CountDownController());
 var counter = Rx(Obx(() => Counter(
       controller: countDownController.value,
     )));
-var wsChannel = "0".obs;
+var acumulado = "0".obs;
+var cards = [].obs;

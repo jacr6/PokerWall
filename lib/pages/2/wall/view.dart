@@ -22,6 +22,9 @@ class WallPage extends GetView<WallController> {
         if (command == "pause") {
           countDownController.value.pause();
         }
+         if (command == "resume") {
+          countDownController.value.resume();
+        }
       }
     });
     return ContentLayoutWidget(

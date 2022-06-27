@@ -14,9 +14,7 @@ import 'package:process_run/shell.dart';
 
 class KeyPad extends StatelessWidget {
   KeyPad({Key? key}) : super(key: key);
-  final _channel = WebSocketChannel.connect(
-    Uri.parse('ws://localhost:5000/echo'),
-  );
+ 
   @override
   Widget build(BuildContext context) {
     return Obx(() {
@@ -24,26 +22,7 @@ class KeyPad extends StatelessWidget {
         children: [
           ElevatedButton(
             onPressed: () {
-              showCustomDialog(
-                  context,
-                  DurationPicker(
-                    duration: duration.value,
-                    baseUnit: BaseUnit.minute,
-                    onChange: (val) {
-                      duration.value = val;
-                      _channel.sink
-                          .add('command:timer:${duration.value.inMinutes}');
-                    },
-                    snapToMins: 5.0,
-                  ),
-                  "Close",
-                  buttonColor: Colors.white);
-            },
-            child: Text("Set Timer"),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              _channel.sink
+              globalctx.channel.sink
                   .add('command:${!isRunning.value ? 'pause' : 'start'}');
               isRunning.value = !isRunning.value;
             },
@@ -51,19 +30,21 @@ class KeyPad extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              _channel.sink.add('command:reset');
+              globalctx.channel.sink.add('command:restart');
+              isRunning.value = false;
+            },
+            child: Text('Restart'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              globalctx.channel.sink.add('command:reset');
               isRunning.value = false;
             },
             child: Text('Reset'),
           ),
           ElevatedButton(
             onPressed: () {
-              _channel.sink.add('command:mano:${mano.value}');
-              _channel.sink.add('command:acumulado:${acumulado.value}');
-              _channel.sink.add('command:mensaje:${mensaje.value}');
-              _channel.sink.add('command:cards:${cards.join(",")}');
-              _channel.sink.add('command:timer:${duration.value.inMinutes}');
-              _channel.sink.add('command:reset');
+              sendData();
             },
             child: Text('Update Window'),
           ),
@@ -82,7 +63,8 @@ class KeyPad extends StatelessWidget {
                   log(e);
                 } finally {
                   shell2.run(" chromium http://localhost:$randPort/#/Wall");
-                  _channel.sink.add('command:timer:${duration.value.inMinutes}');
+                  globalctx.channel.sink
+                      .add('command:timer:${duration.value.inMinutes}');
                 }
               }
 

@@ -21,6 +21,9 @@ class AdminPage extends GetView<AdminController> {
                     height: Get.height * 0.25,
                   ),
                   KeyPad(),
+                  SizedBox(
+                    height: Get.height * 0.05,
+                  ),
                   Parameters(),
                 ],
               ))

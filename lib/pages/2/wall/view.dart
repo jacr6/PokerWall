@@ -11,53 +11,15 @@ import 'widgets/index.dart';
 import 'package:text_scroll/text_scroll.dart';
 
 class WallPage extends GetView<WallController> {
-  WallPage({Key? key}) : super(key: key);
-
+  WallPage({Key? key}) : super(key: key) {
+    listenChannel(channel);
+  }
+  final channel = WebSocketChannel.connect(
+    Uri.parse('ws://localhost:5000/echo'),
+  );
   Widget _buildView(BuildContext context) {
-    final channel = WebSocketChannel.connect(
-      Uri.parse('ws://localhost:5000/echo'),
-    );
-    channel.stream.listen((data) {
-      if (data.toString().contains("command")) {
-        var command = data.toString().split(":")[1];
-        if (command == "pause") {
-          countDownController.value.pause();
-        }
-        if (command == "resume") {
-          countDownController.value.resume();
-        }
-        if (command == "restart") {
-          countDownController.value.restart(initialPosition: 0);
-        }
-        if (command == "reset") {
-          countDownController.value.restart(initialPosition: 0);
-          countDownController.value.pause();
-        }
-        if (command == "timer") {
-          var newVal = data.toString().split(":")[2];
-          duration.value =
-              Duration(hours: 0, minutes: int.parse(newVal.toString()));
-          countDownController.value.restart(initialPosition: 0);
-          countDownController.value.pause();
-        }
-        if (command == "cards") {
-          var newVal = data.toString().split(":")[2].toString().split(",");
-          cards.value = newVal as List<int>;
-          updateCards();
-        }
-        if (command == "mensaje") {
-          var newmensaje = data.toString().split(":")[2];
-          mensaje.value = newmensaje;
-        }
-        if (command == "acumulado") {
-          acumulado.value = data.toString().split(":")[2];
-        }
-        if (command == "mano") {
-          mano.value = data.toString().split(":")[2];
-        }
-      }
-    });
     updateCards();
+
     return ContentLayoutWidget(
         background: "assets/images/1x/fondo.jpg",
         child: SingleChildScrollView(
@@ -71,39 +33,19 @@ class WallPage extends GetView<WallController> {
                       width: Get.width * 0.10,
                       height: Get.height * 0.10,
                     ),
-                    Obx(() {
-                      return Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(left: Get.width * 0.175),
-                              child: Row(
-                                children: cardImages.value,
-                              ),
-                            ),
-                            MensajeWidget(
-                                label: "Acumulado: ", value: acumulado.value),
-                            MensajeWidget(label: "Mano: ", value: mano.value),
-                          ],
-                        ),
-                      );
-                    }),
-                    counter.value,
-                    Obx(() {
-                      return MarqueeText(
-                        text: TextSpan(
-                          text: mensaje.value,
-                        ),
-                        style: TextStyle(
-                          fontSize: 24,
-                          color: Colors.white,
-                        ),
-                        speed: 20,
-                        textDirection: TextDirection.rtl,
-                        marqueeDirection: MarqueeDirection.rtl,
-                      );
-                    }),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Wrap(
+                        children: cardImages.value,
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        ParamListWidget(),
+                        counter.value,
+                      ],
+                    ),
+                    Prompter(),
                   ],
                 );
               }))
@@ -127,24 +69,77 @@ class WallPage extends GetView<WallController> {
   }
 }
 
+class Prompter extends StatelessWidget {
+  const Prompter({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Obx(() {
+      return MarqueeText(
+        text: TextSpan(
+          text: mensaje.value,
+        ),
+        style: TextStyle(
+          fontSize: 24,
+          color: Colors.white,
+        ),
+        speed: 20,
+        textDirection: TextDirection.rtl,
+        marqueeDirection: MarqueeDirection.rtl,
+      );
+    });
+  }
+}
+
+class ParamListWidget extends StatelessWidget {
+  const ParamListWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Obx(() {
+      return Stack(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              children: [
+                MensajeWidget(label: "Acumulado: ", value: acumulado.value),
+                MensajeWidget(label: "Mano: ", value: mano.value),
+                MensajeWidget(label: "Mesa: ", value: mesa.value),
+                MensajeWidget(label: "Silla: ", value: silla.value),
+              ],
+            ),
+          ),
+        ],
+      );
+    });
+  }
+}
+
 class MensajeWidget extends StatelessWidget {
-  const MensajeWidget({Key? key, required this.label, required this.value})
+  const MensajeWidget(
+      {Key? key, required this.label, required this.value, this.fontSize = 10})
       : super(key: key);
   final label;
   final value;
+  final fontSize;
   @override
   Widget build(BuildContext context) {
     return Wrap(
       children: [
         Text(label,
             style: KTextSytle(
-                    fontSize: (Get.width / Get.height) * isMobile * 5,
+                    fontSize: (Get.width / Get.height) * isMobile * fontSize,
                     color: Colors.white,
                     context: context)
                 .getStyle()),
         Text(value,
             style: KTextSytle(
-                    fontSize: (Get.width / Get.height) * isMobile * 5,
+                    fontSize: (Get.width / Get.height) * isMobile * fontSize,
                     color: Colors.white,
                     context: context)
                 .getStyle()),

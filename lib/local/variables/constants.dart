@@ -1,8 +1,9 @@
 // ignore_for_file: non_constant_identifier_names, prefer_function_declarations_over_variables, import_of_legacy_library_into_null_safe
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../index.dart';
- 
+
 import 'package:google_fonts/google_fonts.dart';
 
 //SERVER DATA
@@ -27,9 +28,7 @@ class KTextSytle {
       return GoogleFonts.poppins(
           textStyle: TextStyle(
         color: color,
-        fontSize: MediaQuery.of(context).size.width /
-            MediaQuery.of(context).size.height *
-            fontSize,
+        fontSize: Get.width / Get.height * fontSize,
         fontWeight: fontWeight ?? FontWeight.normal,
       ));
     };

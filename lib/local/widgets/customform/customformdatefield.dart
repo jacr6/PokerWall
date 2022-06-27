@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../index.dart';
 import 'index.dart';
 
@@ -34,7 +35,7 @@ class CustomFormDateFieldWidget extends StatelessWidget {
       child: Row(
         children: [
           CustomFormLabelWidget(label: label, fontWeight: FontWeight.normal),
-          SizedBox(width: MediaQuery.of(context).size.width * 0.01),
+          SizedBox(width: Get.width * 0.01),
           RoundedFormDatepicker(
               disabled: disabled,
               validator: validator,

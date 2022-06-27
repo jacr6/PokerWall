@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../index.dart';
 
@@ -23,26 +23,20 @@ class CustomFormTextInput extends StatelessWidget {
       children: [
         Text(label,
             style: KTextSytle(
-                    fontSize: (MediaQuery.of(context).size.width /
-                            MediaQuery.of(context).size.height) *
-                        isMobile *
-                        fontSize,
+                    fontSize: (Get.width / Get.height) * isMobile * fontSize,
                     color: Colors.white,
                     context: context)
                 .getStyle()),
         Container(
           color: Colors.white,
-          width: MediaQuery.of(context).size.width * width,
+          width: Get.width * width,
           child: TextFormField(
             onFieldSubmitted: onFieldSubmitted,
             initialValue: initialValue.toString(),
             cursorColor: Colors.black54,
             style: KTextSytle(
                     context: context,
-                    fontSize: MediaQuery.of(context).size.width /
-                        MediaQuery.of(context).size.height *
-                        isMobile *
-                        fontSize,
+                    fontSize: Get.width / Get.height * isMobile * fontSize,
                     fontWeight: FontWeight.normal)
                 .getStyle(),
             decoration: InputDecoration.collapsed(
@@ -51,10 +45,7 @@ class CustomFormTextInput extends StatelessWidget {
               hintText: "Acumulado",
               hintStyle: TextStyle(
                 color: Colors.black54,
-                fontSize: (MediaQuery.of(context).size.width /
-                        MediaQuery.of(context).size.height) *
-                    isMobile *
-                    fontSize,
+                fontSize: (Get.width / Get.height) * isMobile * fontSize,
                 decorationStyle: TextDecorationStyle.solid,
               ),
             ),

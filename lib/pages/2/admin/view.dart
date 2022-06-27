@@ -12,20 +12,18 @@ class AdminPage extends GetView<AdminController> {
         child: SingleChildScrollView(
           child: Stack(
             children: [
-              SafeArea(child: Obx(() {
-                return Column(
-                  children: [
-                    Image.asset(
-                      "assets/images/1x/logo.png",
-                      width: MediaQuery.of(context).size.width * 0.5,
-                      height: MediaQuery.of(context).size.height * 0.5,
-                    ),
-                    counter.value,
-                    KeyPad(),
-                    Parameters(),
-                  ],
-                );
-              }))
+              SafeArea(
+                  child: Column(
+                children: [
+                  Image.asset(
+                    "assets/images/1x/logo.png",
+                    width: Get.width * 0.5,
+                    height: Get.height * 0.5,
+                  ),
+                  KeyPad(),
+                  Parameters(),
+                ],
+              ))
             ],
           ),
         ),
@@ -38,8 +36,8 @@ class AdminPage extends GetView<AdminController> {
       onWillPop: () async => true,
       child: Scaffold(
         body: SizedBox(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height * 2,
+            width: Get.width,
+            height: Get.height * 2,
             child: _buildView(context)),
       ),
     );

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 
 import '../../../index.dart';
 
@@ -44,8 +45,8 @@ class RoundedFormTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * width * isMobile,
-      height: MediaQuery.of(context).size.height * height,
+      width: Get.width * width * isMobile,
+      height: Get.height * height,
       padding: EdgeInsets.only(left: left, top: top),
       decoration: BoxDecoration(
           color: Colors.grey, borderRadius: BorderRadius.circular(50)),
@@ -74,9 +75,7 @@ class RoundedFormTextField extends StatelessWidget {
           hintText: hintText,
           hintStyle: TextStyle(
             color: Colors.black54,
-            fontSize: (MediaQuery.of(context).size.width /
-                    MediaQuery.of(context).size.height) *
-                isMobile,
+            fontSize: (Get.width / Get.height) * isMobile,
             decorationStyle: TextDecorationStyle.solid,
           ),
         ),

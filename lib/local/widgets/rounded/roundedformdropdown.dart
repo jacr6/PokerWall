@@ -1,5 +1,6 @@
 // ignore_for_file: must_be_immutable
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../index.dart';
 
 class RoundedFormDropdown extends StatelessWidget {
@@ -39,8 +40,8 @@ class RoundedFormDropdown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * width,
-      height: MediaQuery.of(context).size.height * height,
+      width: Get.width * width,
+      height: Get.height * height,
       padding: EdgeInsets.only(left: left, top: top),
       decoration: BoxDecoration(
           color: Colors.blue, borderRadius: BorderRadius.circular(50)),

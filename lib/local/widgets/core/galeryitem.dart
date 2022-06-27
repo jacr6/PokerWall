@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../index.dart';
 
@@ -18,7 +19,7 @@ class GalleryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.of(context).size.width * 0.4,
+      width: Get.width * 0.4,
       child: Column(
         children: [
           GestureDetector(
@@ -26,13 +27,13 @@ class GalleryItem extends StatelessWidget {
             child: Image.asset(
               image,
               fit: BoxFit.cover,
-              height: MediaQuery.of(context).size.height * 0.3,
+              height: Get.height * 0.3,
             ),
           ),
           Padding(
             padding: EdgeInsets.only(
-              top: MediaQuery.of(context).size.height * 0.02,
-              left: MediaQuery.of(context).size.width * 0.03,
+              top: Get.height * 0.02,
+              left: Get.width * 0.03,
             ),
             child: Align(
                 alignment: Alignment.centerLeft,

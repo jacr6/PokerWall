@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../index.dart';
 import 'index.dart';
 
@@ -31,7 +32,7 @@ class CustomKeypadWidget extends StatelessWidget {
           child: CustomFormLabelWidget(
               label: prevlabel, fontWeight: prevFontWeight),
         ),
-        SizedBox(width: MediaQuery.of(context).size.width * width),
+        SizedBox(width: Get.width * width),
         GestureDetector(
           onTap: onNext,
           child: CustomFormLabelWidget(

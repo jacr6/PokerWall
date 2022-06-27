@@ -25,7 +25,7 @@ class CustomTitleWidget extends StatelessWidget {
             fontWeight: fontWeight,
             color: color,
             fontSize: fontSize),
-        // SizedBox(width: MediaQuery.of(context).size.width * width)
+        // SizedBox(width: Get.width * width)
       ],
     );
   }

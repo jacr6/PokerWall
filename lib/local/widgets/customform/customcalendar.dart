@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_function_declarations_over_variables
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class CustomCalendarView extends StatefulWidget {
@@ -223,8 +224,8 @@ class _CustomCalendarViewState extends State<CustomCalendarView> {
         listUI.add(
           Expanded(
             child: SizedBox(
-              width: MediaQuery.of(context).size.width * 0.06,
-              height: MediaQuery.of(context).size.height * 0.1,
+              width: Get.width * 0.06,
+              height: Get.height * 0.1,
               child: AspectRatio(
                 aspectRatio: 1.0,
                 child: Stack(
@@ -312,10 +313,7 @@ class _CustomCalendarViewState extends State<CustomCalendarView> {
                                         : currentMonthDate!.month == date.month
                                             ? Colors.black
                                             : Colors.grey.withOpacity(0.6),
-                                    fontSize:
-                                        MediaQuery.of(context).size.width > 360
-                                            ? 18
-                                            : 16,
+                                    fontSize: Get.width > 360 ? 18 : 16,
                                     fontWeight: getIsItStartAndEndDate(date)
                                         ? FontWeight.bold
                                         : FontWeight.normal),

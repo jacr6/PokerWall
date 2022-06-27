@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../index.dart';
 import 'index.dart';
 
@@ -67,7 +68,7 @@ class CustomFormCounterFieldWidget extends StatelessWidget {
                 bound: bound,
                 step: step,
                 onValueChanged: onValueChanged),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.061),
+            SizedBox(height: Get.height * 0.061),
           ],
         ),
       ),

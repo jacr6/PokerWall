@@ -1,9 +1,9 @@
 // ignore_for_file: prefer_function_declarations_over_variables, import_of_legacy_library_into_null_safe
 import 'dart:convert';
- 
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart'; 
+import 'package:intl/intl.dart';
 import 'package:sweetalert/sweetalert.dart';
 import '../index.dart';
 import 'index.dart';
@@ -78,8 +78,8 @@ void showCustomDialog(context, Widget child, String button,
         backgroundColor: backgroundColor,
         content: Container(
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(50)),
-            width: MediaQuery.of(context).size.width * width,
-            height: MediaQuery.of(context).size.height * height,
+            width: Get.width * width,
+            height: Get.height * height,
             child: child),
         actions: <Widget>[
           Row(
@@ -133,7 +133,6 @@ getQuestionData(id) {
   return preguntas.firstWhere((element) => element["code"] == id);
 }
 
- 
 validateRequired() {
   List questions = globalctx.memory["questions"].keys.toSet().toList();
   var rule = globalctx.memory["questions"].isNotEmpty;
@@ -152,7 +151,6 @@ validateRequired() {
   return rule;
 }
 
- 
 sendPoll() {
   try {
     var payload = globalctx.memory.value.toString();

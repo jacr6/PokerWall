@@ -1,5 +1,7 @@
 // @dart=2.9
 import 'dart:io';
+import 'package:web_socket_channel/web_socket_channel.dart';
+
 import 'common/behavior.dart' as common_behavior;
 import 'package:flutter/material.dart';
 import '../index.dart';
@@ -8,7 +10,7 @@ import 'index.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-void main() {
+void main() async {
   try {
     HttpOverrides.global = common_behavior.MyHttpOverrides();
     WidgetsFlutterBinding.ensureInitialized();
@@ -17,7 +19,7 @@ void main() {
 
     var pages = AppPages.pages;
     PRegistry registry =
-        routes.toList().firstWhere((element) => element.name == "/Admin");
+        routes.toList().firstWhere((element) => element.name == "/Wall");
 
     runApp(GetMaterialApp(
         scrollBehavior: common_behavior.ScrollBehavior(),

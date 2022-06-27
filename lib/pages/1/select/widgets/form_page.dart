@@ -18,7 +18,7 @@ class SelectFormPage extends GetView<StatelessWidget> {
         padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
         child: Column(
           children: [
-            SizedBox(height: MediaQuery.of(context).size.height * 0.15),
+            SizedBox(height: Get.height * 0.15),
             Image.asset("assets/images/1x/logo.png"),
             Wrap(
               children: [

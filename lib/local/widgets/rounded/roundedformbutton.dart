@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../index.dart';
 
@@ -32,8 +33,8 @@ class RoundedFormButton extends StatelessWidget {
   Widget build(BuildContext context) {
     var isMobile = isMobileDevice() ? 2 : 1;
     return Container(
-      width: MediaQuery.of(context).size.width * width * isMobile,
-      height: MediaQuery.of(context).size.height * height,
+      width: Get.width * width * isMobile,
+      height: Get.height * height,
       padding: EdgeInsets.only(
         left: left,
         top: top,
@@ -49,17 +50,11 @@ class RoundedFormButton extends StatelessWidget {
           child: Text(
             label,
             strutStyle: StrutStyle(
-              fontSize: (MediaQuery.of(context).size.width /
-                      MediaQuery.of(context).size.height) *
-                  isMobile *
-                  fontSize,
+              fontSize: (Get.width / Get.height) * isMobile * fontSize,
             ),
             style: KTextSytle(
                     context: context,
-                    fontSize: MediaQuery.of(context).size.width /
-                        MediaQuery.of(context).size.height *
-                        isMobile *
-                        fontSize,
+                    fontSize: Get.width / Get.height * isMobile * fontSize,
                     fontWeight: fontWeight,
                     color: textColor)
                 .getStyle(),

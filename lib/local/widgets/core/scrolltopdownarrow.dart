@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ScrollTopDownArrows extends StatelessWidget {
@@ -22,7 +23,7 @@ class ScrollTopDownArrows extends StatelessWidget {
                 style: GoogleFonts.poppins(
                     textStyle: TextStyle(
                   color: const Color.fromARGB(255, 255, 255, 255),
-                  fontSize: MediaQuery.of(context).size.width * 0.05,
+                  fontSize: Get.width * 0.05,
                   fontWeight: FontWeight.normal,
                 )))),
         TextButton(
@@ -33,7 +34,7 @@ class ScrollTopDownArrows extends StatelessWidget {
                 style: GoogleFonts.poppins(
                     textStyle: TextStyle(
                   color: const Color.fromARGB(255, 255, 255, 255),
-                  fontSize: MediaQuery.of(context).size.width * 0.05,
+                  fontSize: Get.width * 0.05,
                   fontWeight: FontWeight.normal,
                 )))),
       ],

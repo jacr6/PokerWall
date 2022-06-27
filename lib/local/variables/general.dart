@@ -26,6 +26,7 @@ var counter = Rx(Obx(() => Counter(
       controller: countDownController.value,
     )));
 var acumulado = "0".obs;
+var mensaje = "...".obs;
 var cards = [].obs;
 var cardImages = Rx(<Widget>[]);
 var cardsCatalog = [

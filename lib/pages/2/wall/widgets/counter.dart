@@ -12,22 +12,24 @@ class Counter extends StatelessWidget {
     return SizedBox(
       height: Get.height * 0.3,
       width: Get.width * 0.3,
-      child: CountDownProgressIndicator(
-        autostart: true,
-        controller: controller,
-        valueColor: Colors.red,
-        backgroundColor: Colors.blue,
-        initialPosition: 0,
-        duration: duration.value.inSeconds,
-        timeFormatter: (seconds) {
-          return Duration(seconds: seconds)
-              .toString()
-              .split('.')[0]
-              .padLeft(8, '0');
-        },
-        text: 'hh:mm:ss',
-        onComplete: () => null,
-      ),
+      child: Obx(() {
+        return CountDownProgressIndicator(
+          autostart: true,
+          controller: controller,
+          valueColor: Colors.red,
+          backgroundColor: Colors.blue,
+          initialPosition: 0,
+          duration: duration.value.inSeconds,
+          timeFormatter: (seconds) {
+            return Duration(seconds: seconds)
+                .toString()
+                .split('.')[0]
+                .padLeft(8, '0');
+          },
+          text: 'hh:mm:ss',
+          onComplete: () => null,
+        );
+      }),
     );
   }
 }

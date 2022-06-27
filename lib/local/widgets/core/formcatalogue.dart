@@ -20,7 +20,7 @@ class FormCatalogueWidget extends StatelessWidget {
       this.validator,
       this.fontSize = 10})
       : super(key: key);
-  final int fontSize;
+  final fontSize;
   List<Map<String, dynamic>> data;
   final String? hintText;
   void Function(String?) onSaved;

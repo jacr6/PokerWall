@@ -1,5 +1,6 @@
 import 'package:countdown_progress_indicator/countdown_progress_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../index.dart';
 import 'index.dart';
@@ -17,18 +18,22 @@ class Parameters extends StatelessWidget {
       cartas.add(
         CustomFormDropDownFieldWidget(
             width: 0.2,
-            fontSize: 5,
+            fontSize: (Get.width / Get.height) * 5,
             hintText: "CARTA ${i + 1}",
             data: cardsCatalog,
-            onSaved: (value) {},
-            onChanged: (value) {}),
+            onSaved: (value) {
+              cards[i] = int.parse(value.toString());
+            },
+            onChanged: (value) {
+              cards[i] = int.parse(value.toString());
+            }),
       );
     }
 
     return Wrap(
       children: [
         CustomFormTextInput(
-            fontSize: 5,
+            fontSize: (Get.width / Get.height) * 5,
             width: 0.2,
             label: "Acumulado: ",
             initialValue: acumulado.value,
@@ -36,7 +41,7 @@ class Parameters extends StatelessWidget {
               acumulado.value = value;
             }),
         CustomFormTextInput(
-            fontSize: 5,
+            fontSize: (Get.width / Get.height) * 5,
             width: 0.2,
             label: "Mensaje: ",
             initialValue: mensaje.value,
@@ -44,7 +49,7 @@ class Parameters extends StatelessWidget {
               mensaje.value = value;
             }),
         CustomFormTextInput(
-            fontSize: 5,
+            fontSize: (Get.width / Get.height) * 5,
             width: 0.2,
             label: "Tiempo: ",
             initialValue: duration.value.inMinutes,
@@ -54,7 +59,7 @@ class Parameters extends StatelessWidget {
         Row(
           children: [
             CustomFormDropDownFieldWidget(
-                fontSize: 5,
+                fontSize: (Get.width / Get.height) * 5,
                 hintText: "MESA",
                 data: mesaCatalog,
                 onSaved: (value) {
@@ -72,7 +77,7 @@ class Parameters extends StatelessWidget {
                       .toString();
                 }),
             CustomFormDropDownFieldWidget(
-                fontSize: 5,
+                fontSize: (Get.width / Get.height) * 5,
                 hintText: "SILLA",
                 data: sillaCatalog,
                 onSaved: (value) {
@@ -90,7 +95,7 @@ class Parameters extends StatelessWidget {
                       .toString();
                 }),
             CustomFormDropDownFieldWidget(
-                fontSize: 5,
+                fontSize: (Get.width / Get.height) * 5,
                 hintText: "TIPO DE MANO",
                 data: manoCatalog,
                 onSaved: (value) {

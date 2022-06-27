@@ -8,7 +8,7 @@ class RoundedFormDropdown extends StatelessWidget {
   final double top;
   final double width;
   final double height;
-  final int fontSize;
+  final  fontSize;
   final String? hintText;
   final String? label;
   final String value;

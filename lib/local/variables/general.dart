@@ -27,7 +27,7 @@ var counter = Rx(Obx(() => Counter(
     )));
 var acumulado = "0".obs;
 var mensaje = "...".obs;
-var cards = [].obs;
+var cards = [53, 53, 53, 53, 53].obs;
 var cardImages = Rx(<Widget>[]);
 var manoCatalog = [
   {"code": 1, "description": "MANO 1"},
@@ -111,6 +111,7 @@ var cardsCatalog = [
   {"code": 50, "description": "Diamante_11"},
   {"code": 51, "description": "Diamante_12"},
   {"code": 52, "description": "Diamante_13"},
+  {"code": 53, "description": "Hidden"},
 ];
 updateCards() {
   cardImages.value = <Widget>[];

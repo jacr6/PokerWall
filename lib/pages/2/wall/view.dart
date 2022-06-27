@@ -35,13 +35,14 @@ class WallPage extends GetView<WallController> {
         }
         if (command == "timer") {
           var newVal = data.toString().split(":")[2];
-          duration.value = Duration(hours: 0, minutes: int.parse(newVal.toString()));
+          duration.value =
+              Duration(hours: 0, minutes: int.parse(newVal.toString()));
           countDownController.value.restart(initialPosition: 0);
           countDownController.value.pause();
         }
         if (command == "cards") {
           var newVal = data.toString().split(":")[2].toString().split(",");
-          cards.value = newVal;
+          cards.value = newVal as List<int>;
           updateCards();
         }
         if (command == "mensaje") {

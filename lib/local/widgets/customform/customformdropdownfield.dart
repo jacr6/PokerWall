@@ -41,7 +41,7 @@ class CustomFormDropDownFieldWidget extends StatelessWidget {
               label: label, fontWeight: FontWeight.normal, fontSize: fontSize),
           if (data.isNotEmpty)
             RoundedFormDropdown(
-                fontSize: fontSize,
+                fontSize: int.parse(fontSize.toString()),
                 onChanged: onChanged,
                 width: width,
                 height: height,

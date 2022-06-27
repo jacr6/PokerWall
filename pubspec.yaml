@@ -61,6 +61,7 @@ flutter:
     - assets/
     - assets/images/
     - assets/images/1x/ 
+    - assets/images/cards/ 
   generate: true
   uses-material-design: true
   # fonts:

@@ -8,11 +8,11 @@ import 'widgets/index.dart';
 
 class WallPage extends GetView<WallController> {
   WallPage({Key? key}) : super(key: key);
-  final channel = WebSocketChannel.connect(
-    Uri.parse('ws://localhost:5000/echo'),
-  );
 
   Widget _buildView(BuildContext context) {
+    final channel = WebSocketChannel.connect(
+      Uri.parse('ws://localhost:5000/echo'),
+    );
     channel.stream.listen((data) {
       if (data.toString().contains("acumulado")) {
         acumulado.value = data.toString().split(":")[1];
@@ -35,9 +35,11 @@ class WallPage extends GetView<WallController> {
         if (command == "cards") {
           var newCards = data.toString().split(":")[2].toString().split(",");
           cards.value = newCards;
+          updateCards();
         }
       }
     });
+    updateCards();
     return ContentLayoutWidget(
         background: "assets/images/1x/fondo.jpg",
         child: SingleChildScrollView(
@@ -54,24 +56,31 @@ class WallPage extends GetView<WallController> {
                     Obx(() {
                       return Padding(
                         padding: const EdgeInsets.all(20.0),
-                        child: Row(
+                        child: Column(
                           children: [
-                            Text("Acumulado: ",
-                                style: KTextSytle(
-                                        fontSize: (Get.width / Get.height) *
-                                            isMobile *
-                                            60,
-                                        color: Colors.white,
-                                        context: context)
-                                    .getStyle()),
-                            Text(acumulado.value,
-                                style: KTextSytle(
-                                        fontSize: (Get.width / Get.height) *
-                                            isMobile *
-                                            60,
-                                        color: Colors.white,
-                                        context: context)
-                                    .getStyle()),
+                            Row(
+                              children: cardImages.value,
+                            ),
+                            Row(
+                              children: [
+                                Text("Acumulado: ",
+                                    style: KTextSytle(
+                                            fontSize: (Get.width / Get.height) *
+                                                isMobile *
+                                                60,
+                                            color: Colors.white,
+                                            context: context)
+                                        .getStyle()),
+                                Text(acumulado.value,
+                                    style: KTextSytle(
+                                            fontSize: (Get.width / Get.height) *
+                                                isMobile *
+                                                60,
+                                            color: Colors.white,
+                                            context: context)
+                                        .getStyle()),
+                              ],
+                            ),
                           ],
                         ),
                       );

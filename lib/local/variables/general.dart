@@ -31,9 +31,16 @@ var mensaje = "...".obs;
 var cards = [53, 53, 53, 53, 53].obs;
 var cardImages = Rx(<Widget>[]);
 var manoCatalog = [
-  {"code": 1, "description": "MANO 1"},
-  {"code": 2, "description": "MANO 2"},
-  {"code": 3, "description": "MANO 3"},
+  {"code": 1, "description": "ESCALERA REAL"},
+  {"code": 2, "description": "ESCALERA DE COLOR"},
+  {"code": 3, "description": "POQUER"},
+  {"code": 4, "description": "FULL HOUSE"},
+  {"code": 5, "description": "COLOR"},
+  {"code": 6, "description": "ESCALERA"},
+  {"code": 7, "description": "TERCIA"},
+  {"code": 8, "description": "DOBLE PAR"},
+  {"code": 9, "description": "PAR"},
+  {"code": 10, "description": "CARTA AS ALTA"},
 ];
 var sillaCatalog = [
   {"code": 1, "description": "SILLA 1"},

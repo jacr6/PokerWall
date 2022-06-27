@@ -50,24 +50,27 @@ class WallPage extends GetView<WallController> {
                   children: [
                     Image.asset(
                       "assets/images/1x/logo.png",
-                      width: Get.width * 0.5,
-                      height: Get.height * 0.5,
+                      width: Get.width * 0.20,
+                      height: Get.height * 0.20,
                     ),
                     Obx(() {
                       return Padding(
                         padding: const EdgeInsets.all(20.0),
                         child: Column(
                           children: [
-                            Row(
-                              children: cardImages.value,
+                            Padding(
+                              padding: EdgeInsets.only(left: Get.width * 0.175),
+                              child: Row(
+                                children: cardImages.value,
+                              ),
                             ),
-                            Row(
+                            Wrap(
                               children: [
                                 Text("Acumulado: ",
                                     style: KTextSytle(
                                             fontSize: (Get.width / Get.height) *
                                                 isMobile *
-                                                60,
+                                                10,
                                             color: Colors.white,
                                             context: context)
                                         .getStyle()),
@@ -75,7 +78,7 @@ class WallPage extends GetView<WallController> {
                                     style: KTextSytle(
                                             fontSize: (Get.width / Get.height) *
                                                 isMobile *
-                                                60,
+                                                10,
                                             color: Colors.white,
                                             context: context)
                                         .getStyle()),

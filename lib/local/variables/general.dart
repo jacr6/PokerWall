@@ -86,20 +86,36 @@ updateCards() {
   cardImages.value = <Widget>[];
   if (cards.value.isNotEmpty) {
     for (var cardCode in cards.value) {
-      var cardDescription = cardsCatalog
-          .firstWhere((card) => card["code"].toString() == cardCode.toString())["description"];
-      cardImages.value.add(Image.asset(
-        "assets/images/cards/${cardDescription}.png",
-        width: Get.width * 0.1,
-        height: Get.height * 0.1,
+      var cardDescription = cardsCatalog.firstWhere((card) =>
+          card["code"].toString() == cardCode.toString())["description"];
+      cardImages.value.add(Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Container(
+          color: Colors.white,
+          width: Get.width * 0.075,
+          height: Get.height * 0.2,
+          child: Image.asset(
+            "assets/images/cards/${cardDescription}.png",
+            width: Get.width * 0.2,
+            height: Get.height * 0.2,
+          ),
+        ),
       ));
     }
   } else {
     for (var i = 0; i < 5; i++) {
-      cardImages.value.add(Image.asset(
-        "assets/images/cards/Hidden.png",
-        width: Get.width * 0.1,
-        height: Get.height * 0.1,
+      cardImages.value.add(Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Container(
+          color: Colors.white,
+          width: Get.width * 0.075,
+          height: Get.height * 0.2,
+          child: Image.asset(
+            "assets/images/cards/Hidden.png",
+            width: Get.width * 0.2,
+            height: Get.height * 0.2,
+          ),
+        ),
       ));
     }
   }

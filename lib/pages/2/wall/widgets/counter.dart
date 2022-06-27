@@ -5,16 +5,13 @@ import 'package:get/get.dart';
 import '../../../../index.dart';
 
 class Counter extends StatelessWidget {
-   Counter({
-    Key? key,
-    required this.controller
-  }) : super(key: key); 
+  Counter({Key? key, required this.controller}) : super(key: key);
   CountDownController? controller;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: Get.height * 0.5,
-      width: Get.width * 0.5,
+      height: Get.height * 0.3,
+      width: Get.width * 0.3,
       child: CountDownProgressIndicator(
         autostart: true,
         controller: controller,

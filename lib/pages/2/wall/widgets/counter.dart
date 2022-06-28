@@ -10,13 +10,17 @@ class Counter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: Get.height * 0.3,
+      height: Get.height * 0.5,
       width: Get.width * 0.3,
       child: Obx(() {
         return CountDownProgressIndicator(
           autostart: true,
           controller: controller,
           valueColor: Colors.red,
+          timeTextStyle: TextStyle(
+            fontSize: 40,
+            color: Colors.white,
+          ),
           backgroundColor: Colors.blue,
           initialPosition: 0,
           duration: duration.value.inSeconds,
@@ -26,8 +30,18 @@ class Counter extends StatelessWidget {
                 .split('.')[0]
                 .padLeft(8, '0');
           },
-          text: 'hh:mm:ss',
-          onComplete: () => null,
+          text: '',
+          onComplete: () => {
+            showDialog(
+                context: context,
+                builder: (BuildContext _) {
+                  return Text("Se acabò el tiempo",
+                      style: TextStyle(
+                        fontSize: 24,
+                        color: Colors.white,
+                      ));
+                })
+          },
         );
       }),
     );

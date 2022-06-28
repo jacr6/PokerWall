@@ -27,7 +27,11 @@ var counter = Rx(Obx(() => Counter(
       controller: countDownController.value,
     )));
 var acumulado = "0".obs;
-var mensaje = "...".obs;
+var velocidad = 20.obs;
+var tamanio = 15.obs;
+var mensaje =
+    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+        .obs;
 var cards = [53, 53, 53, 53, 53].obs;
 var cardImages = Rx(<Widget>[]);
 var manoCatalog = [
@@ -43,28 +47,28 @@ var manoCatalog = [
   {"code": 10, "description": "CARTA AS ALTA"},
 ];
 var sillaCatalog = [
-  {"code": 1, "description": "SILLA 1"},
-  {"code": 2, "description": "SILLA 2"},
-  {"code": 3, "description": "SILLA 3"},
-  {"code": 4, "description": "SILLA 4"},
-  {"code": 5, "description": "SILLA 5"},
-  {"code": 6, "description": "SILLA 6"},
-  {"code": 7, "description": "SILLA 7"},
-  {"code": 8, "description": "SILLA 8"},
-  {"code": 9, "description": "SILLA 9"},
-  {"code": 10, "description": "SILLA 10"},
+  {"code": 1, "description": "1"},
+  {"code": 2, "description": "2"},
+  {"code": 3, "description": "3"},
+  {"code": 4, "description": "4"},
+  {"code": 5, "description": "5"},
+  {"code": 6, "description": "6"},
+  {"code": 7, "description": "7"},
+  {"code": 8, "description": "8"},
+  {"code": 9, "description": "9"},
+  {"code": 10, "description": "10"},
 ];
 var mesaCatalog = [
-  {"code": 1, "description": "MESA 1"},
-  {"code": 2, "description": "MESA 2"},
-  {"code": 3, "description": "MESA 3"},
-  {"code": 4, "description": "MESA 4"},
-  {"code": 5, "description": "MESA 5"},
-  {"code": 6, "description": "MESA 6"},
-  {"code": 7, "description": "MESA 7"},
-  {"code": 8, "description": "MESA 8"},
-  {"code": 9, "description": "MESA 9"},
-  {"code": 10, "description": "MESA 10"},
+  {"code": 1, "description": "1"},
+  {"code": 2, "description": "2"},
+  {"code": 3, "description": "3"},
+  {"code": 4, "description": "4"},
+  {"code": 5, "description": "5"},
+  {"code": 6, "description": "6"},
+  {"code": 7, "description": "7"},
+  {"code": 8, "description": "8"},
+  {"code": 9, "description": "9"},
+  {"code": 10, "description": "10"},
 ];
 var cardsCatalog = [
   {"code": 1, "description": "Pica_1"},
@@ -173,6 +177,12 @@ listenChannel(channel) {
         if (command == "mano") {
           mano.value = data.toString().split(":")[2];
         }
+        if (command == "velocidad") {
+          velocidad.value = int.parse(data.toString().split(":")[2]);
+        }
+        if (command == "tamanio") {
+          tamanio.value = int.parse(data.toString().split(":")[2]);
+        }
       }
     }
   });
@@ -194,7 +204,7 @@ updateCards() {
     cardImages.value.add(Padding(
       padding: const EdgeInsets.all(10.0),
       child: Container(
-        color: Colors.white,
+        // color: Colors.white,
         width: Get.width * 0.16,
         height: Get.height * 0.3,
         child: Image.asset(
@@ -219,6 +229,8 @@ sendData() {
   globalctx.channel.sink.add('command:silla:${silla.value}');
   globalctx.channel.sink.add('command:acumulado:${acumulado.value}');
   globalctx.channel.sink.add('command:mensaje:${mensaje.value}');
+  globalctx.channel.sink.add('command:velocidad:${velocidad.value}');
+  globalctx.channel.sink.add('command:tamanio:${tamanio.value}');
   sendCards();
   globalctx.channel.sink.add('command:timer:${duration.value.inMinutes}');
   globalctx.channel.sink.add('command:reset');

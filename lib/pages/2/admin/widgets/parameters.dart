@@ -35,7 +35,23 @@ class Parameters extends StatelessWidget {
         CustomFormTextInput(
             fontSize: 15,
             width: 0.2,
-            label: "Acumulado: ",
+            label: "Velocidad Prompter: ",
+            initialValue: velocidad.value,
+            onChange: (value) {
+              velocidad.value = int.parse(value.toString());
+            }),
+        CustomFormTextInput(
+            fontSize: 15,
+            width: 0.2,
+            label: "Tamaño Prompter: ",
+            initialValue: tamanio.value,
+            onChange: (value) {
+              tamanio.value = int.parse(value.toString());
+            }),
+        CustomFormTextInput(
+            fontSize: 15,
+            width: 0.2,
+            label: "JackPot: ",
             initialValue: acumulado.value,
             onChange: (value) {
               acumulado.value = value;

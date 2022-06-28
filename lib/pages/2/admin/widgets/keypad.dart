@@ -26,27 +26,27 @@ class KeyPad extends StatelessWidget {
                   .add('command:${!isRunning.value ? 'pause' : 'start'}');
               isRunning.value = !isRunning.value;
             },
-            child: Text(isRunning.value ? 'Pause' : 'Start'),
+            child: Text(isRunning.value ? 'Pausar' : 'Reanudar/Comenzar'),
           ),
           ElevatedButton(
             onPressed: () {
               globalctx.channel.sink.add('command:restart');
               isRunning.value = false;
             },
-            child: Text('Restart'),
+            child: Text('Reiniciar'),
           ),
           ElevatedButton(
             onPressed: () {
               globalctx.channel.sink.add('command:reset');
               isRunning.value = false;
             },
-            child: Text('Reset'),
+            child: Text('Restablecer'),
           ),
           ElevatedButton(
             onPressed: () {
               sendData();
             },
-            child: Text('Update Window'),
+            child: Text('Actualizar Pantalla'),
           ),
           ElevatedButton(
             onPressed: () {
@@ -70,7 +70,7 @@ class KeyPad extends StatelessWidget {
 
               isRunning.value = true;
             },
-            child: Text('Show Window'),
+            child: Text('Mostar Pantalla'),
           )
         ],
       );

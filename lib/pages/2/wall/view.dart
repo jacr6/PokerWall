@@ -28,7 +28,7 @@ class WallPage extends GetView<WallController> {
                         children: cardImages.value,
                       ),
                     ),
-                    Wrap(
+                    Row(
                       children: [
                         Image.asset(
                           "assets/images/1x/logo.png",

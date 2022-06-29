@@ -33,13 +33,19 @@ class Counter extends StatelessWidget {
           onComplete: () {
             countDownController.value.restart(initialPosition: 0);
             countDownController.value.pause();
-            showCustomDialog(context, Text('''
+            SweetAlertV2.show(context,
+                curve: ElasticInCurve(),
+                title: '''
 ACABO EL TIEMPO
 GANADOR:
 MESA:${mesa.value}
 SILLA:${silla.value}
 JACKPOT: ${acumulado.value}\$
-                        '''), "Close");
+                        ''',
+                style: SweetAlertV2Style.success, onPress: (bool isConfirm) {
+              Get.close(1);
+              return false;
+            });
           },
         );
       }),

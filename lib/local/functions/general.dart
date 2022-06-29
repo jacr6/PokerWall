@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import '../../pages/2/wall/widgets/counter.dart';
 import '../index.dart';
 import 'index.dart';
 
@@ -204,6 +205,9 @@ listenChannel(channel) {
               Duration(hours: 0, minutes: int.parse(newVal.toString()));
           countDownController.value.restart(initialPosition: 0);
           countDownController.value.pause();
+          counter.value = Obx(() => Counter(
+                controller: countDownController.value,
+              ));
         }
         if (command == "cards") {
           List<int> newData = [];

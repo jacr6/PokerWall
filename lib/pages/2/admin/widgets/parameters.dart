@@ -16,7 +16,7 @@ class Parameters extends StatelessWidget {
 
     for (var i = 0; i < 5; i++) {
       cartas.add(
-        CustomFormDropDownFieldWidget(
+        RoundedFormDropdown(
             width: 0.2,
             fontSize: 15,
             hintText: "CARTA ${i + 1}",
@@ -81,7 +81,7 @@ class Parameters extends StatelessWidget {
             }),
         Row(
           children: [
-            CustomFormDropDownFieldWidget(
+            RoundedFormDropdown(
                 fontSize: 15,
                 hintText: "MESA",
                 data: mesaCatalog,
@@ -99,7 +99,7 @@ class Parameters extends StatelessWidget {
                           value!.toString())["description"]
                       .toString();
                 }),
-            CustomFormDropDownFieldWidget(
+            RoundedFormDropdown(
                 fontSize: 15,
                 hintText: "SILLA",
                 data: sillaCatalog,
@@ -117,7 +117,7 @@ class Parameters extends StatelessWidget {
                           value!.toString())["description"]
                       .toString();
                 }),
-            CustomFormDropDownFieldWidget(
+            RoundedFormDropdown(
                 fontSize: 15,
                 hintText: "TIPO DE MANO",
                 data: manoCatalog,

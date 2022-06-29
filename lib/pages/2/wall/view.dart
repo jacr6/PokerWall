@@ -8,8 +8,8 @@ class WallPage extends GetView<WallController> {
   WallPage({Key? key}) : super(key: key) {
     listenChannel(channel);
     loadConfig("config");
-    var websocket = globalConfig["websocket"]??"localhost";
-    var port = globalConfig["port"]??5000;
+    var websocket = globalConfig["websocket"] ?? "localhost";
+    var port = globalConfig["port"] ?? 5000;
     channel = WebSocketChannel.connect(
       Uri.parse("ws://$websocket:$port/echo"),
     );
@@ -60,6 +60,12 @@ class WallPage extends GetView<WallController> {
     return WillPopScope(
       onWillPop: () async => true,
       child: Scaffold(
+        floatingActionButton: ElevatedButton(
+          child: Text("Back"),
+          onPressed: () {
+            Get.back();
+          },
+        ),
         body: SizedBox(
             width: Get.width,
             height: Get.height * 2,

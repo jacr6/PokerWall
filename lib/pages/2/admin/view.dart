@@ -38,6 +38,12 @@ class AdminPage extends GetView<AdminController> {
     return WillPopScope(
       onWillPop: () async => true,
       child: Scaffold(
+        floatingActionButton: ElevatedButton(
+          child: Text("Back"),
+          onPressed: () {
+            Get.back();
+          },
+        ),
         body: SizedBox(
             width: Get.width,
             height: Get.height * 2,

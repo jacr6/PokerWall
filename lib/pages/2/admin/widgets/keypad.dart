@@ -14,13 +14,13 @@ import 'package:process_run/shell.dart';
 
 class KeyPad extends StatelessWidget {
   KeyPad({Key? key}) : super(key: key);
- 
+
   @override
   Widget build(BuildContext context) {
     return Obx(() {
       return Row(
         children: [
-          TextButton(
+          ElevatedButton(
             onPressed: () {
               globalctx.channel.sink
                   .add('command:${!isRunning.value ? 'pause' : 'start'}');
@@ -28,27 +28,27 @@ class KeyPad extends StatelessWidget {
             },
             child: Text(isRunning.value ? 'Pausar' : 'Reanudar/Comenzar'),
           ),
-          TextButton(
+          ElevatedButton(
             onPressed: () {
               globalctx.channel.sink.add('command:restart');
               isRunning.value = false;
             },
             child: Text('Reiniciar'),
           ),
-          TextButton(
+          ElevatedButton(
             onPressed: () {
               globalctx.channel.sink.add('command:reset');
               isRunning.value = false;
             },
             child: Text('Restablecer'),
           ),
-          TextButton(
+          ElevatedButton(
             onPressed: () {
               sendData();
             },
             child: Text('Actualizar Pantalla'),
           ),
-          TextButton(
+          ElevatedButton(
             onPressed: () {
               if (kIsWeb) {
                 // running on the web!

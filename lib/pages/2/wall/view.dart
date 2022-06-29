@@ -80,12 +80,12 @@ class WallPage extends GetView<WallController> {
     return WillPopScope(
       onWillPop: () async => true,
       child: Scaffold(
-        floatingActionButton: ElevatedButton(
-          child: Text("Back"),
-          onPressed: () {
-            Get.back();
-          },
-        ),
+        // floatingActionButton: ElevatedButton(
+        //   child: Text("Back"),
+        //   onPressed: () {
+        //     Get.back();
+        //   },
+        // ),
         body: SizedBox(
             width: Get.width,
             height: Get.height * 2,

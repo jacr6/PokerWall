@@ -14,7 +14,7 @@ class Prompter extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       return Padding(
-        padding: EdgeInsets.only(top: Get.height * 0.07),
+        padding: EdgeInsets.only(top: Get.height * 0.0),
         child: MarqueeText(
           text: TextSpan(
             text: mensaje.value,

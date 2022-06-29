@@ -9,8 +9,8 @@ class Counter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: Get.height * 0.5,
-      width: Get.width * 0.3,
+      height: Get.height * 0.3,
+      width: Get.width * 0.2,
       child: Obx(() {
         return CountDownProgressIndicator(
           autostart: true,

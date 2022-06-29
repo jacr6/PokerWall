@@ -1,8 +1,6 @@
 import 'package:countdown_progress_indicator/countdown_progress_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sweetalert/sweetalert.dart';
-
 import '../../../../index.dart';
 
 class Counter extends StatelessWidget {
@@ -35,19 +33,13 @@ class Counter extends StatelessWidget {
           onComplete: () {
             countDownController.value.restart(initialPosition: 0);
             countDownController.value.pause();
-            SweetAlert.show(context,
-                curve: ElasticInCurve(),
-                title: '''
+            showCustomDialog(context, Text('''
 ACABO EL TIEMPO
 GANADOR:
 MESA:${mesa.value}
 SILLA:${silla.value}
 JACKPOT: ${acumulado.value}\$
-                        ''',
-                style: SweetAlertStyle.success, onPress: (bool isConfirm) {
-              Get.close(1);
-              return false;
-            });
+                        '''), "Close");
           },
         );
       }),

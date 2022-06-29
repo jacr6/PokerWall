@@ -4,24 +4,13 @@ import 'package:flutter/material.dart';
 import '../../../index.dart';
 import 'index.dart';
 import 'package:get/get.dart';
-import 'package:sweetalert/sweetalert.dart';
 
 class SelectController extends GetxController {
   SelectController();
 
   final state = SelectState();
   void getConfirmation(ctx, msg, success) {
-    return SweetAlert.show(ctx,
-        curve: ElasticInCurve(),
-        title: msg,
-        subtitle: success
-            ? 'Se envió un formulario de recuperación a tu correo'
-            : 'Intenta con otro email',
-        style: success ? SweetAlertStyle.success : SweetAlertStyle.error,
-        onPress: (bool isConfirm) {
-      Get.toNamed("/Signin");
-      return false;
-    });
+    showCustomDialog(ctx, Text("OK"), "Close");
   }
 
   Future<void> onSelect(ctx, String email) async {

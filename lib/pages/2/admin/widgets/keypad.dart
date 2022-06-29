@@ -20,7 +20,7 @@ class KeyPad extends StatelessWidget {
     return Obx(() {
       return Row(
         children: [
-          ElevatedButton(
+          TextButton(
             onPressed: () {
               globalctx.channel.sink
                   .add('command:${!isRunning.value ? 'pause' : 'start'}');
@@ -28,27 +28,27 @@ class KeyPad extends StatelessWidget {
             },
             child: Text(isRunning.value ? 'Pausar' : 'Reanudar/Comenzar'),
           ),
-          ElevatedButton(
+          TextButton(
             onPressed: () {
               globalctx.channel.sink.add('command:restart');
               isRunning.value = false;
             },
             child: Text('Reiniciar'),
           ),
-          ElevatedButton(
+          TextButton(
             onPressed: () {
               globalctx.channel.sink.add('command:reset');
               isRunning.value = false;
             },
             child: Text('Restablecer'),
           ),
-          ElevatedButton(
+          TextButton(
             onPressed: () {
               sendData();
             },
             child: Text('Actualizar Pantalla'),
           ),
-          ElevatedButton(
+          TextButton(
             onPressed: () {
               if (kIsWeb) {
                 // running on the web!

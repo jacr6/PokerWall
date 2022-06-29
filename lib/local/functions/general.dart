@@ -4,7 +4,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:sweetalert/sweetalert.dart';
 import '../index.dart';
 import 'index.dart';
 

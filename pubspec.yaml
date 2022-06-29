@@ -22,7 +22,6 @@ dependencies:
   countdown_progress_indicator: ^0.1.2
   duration_picker: ^1.1.0+1
   form_field_validator: ^1.1.0
-  sweetalert: ^0.0.1
   google_fonts: ^3.0.1
   flutter_html: ^0.11.1
   checkbox_formfield: ^0.2.0
@@ -32,8 +31,6 @@ dependencies:
   multiselect_formfield: ^0.1.7
   process_run: ^0.12.3+2
   web_socket_channel: ^2.2.0
-  animated_text_kit: ^4.2.2
-  text_scroll: ^0.0.5
   marquee_text: ^2.5.0+1
 
 dev_dependencies:

@@ -37,8 +37,14 @@ class Counter extends StatelessWidget {
             countDownController.value.pause();
             SweetAlert.show(context,
                 curve: ElasticInCurve(),
-                title: "Tiempo Fuera",
-                style: SweetAlertStyle.error, onPress: (bool isConfirm) {
+                title: '''
+ACABO EL TIEMPO
+GANADOR:
+MESA:${mesa.value}
+SILLA:${silla.value}
+JACKPOT: ${acumulado.value}\$
+                        ''',
+                style: SweetAlertStyle.success, onPress: (bool isConfirm) {
               Get.close(1);
               return false;
             });

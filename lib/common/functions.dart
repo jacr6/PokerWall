@@ -8,13 +8,13 @@ import 'package:get/get.dart';
 
 import '../index.dart';
 
-//  ██████╗ ██████╗ ███╗   ███╗███╗   ███╗ ██████╗ ███╗   ██╗                
-// ██╔════╝██╔═══██╗████╗ ████║████╗ ████║██╔═══██╗████╗  ██║                
-// ██║     ██║   ██║██╔████╔██║██╔████╔██║██║   ██║██╔██╗ ██║                
-// ██║     ██║   ██║██║╚██╔╝██║██║╚██╔╝██║██║   ██║██║╚██╗██║                
-// ╚██████╗╚██████╔╝██║ ╚═╝ ██║██║ ╚═╝ ██║╚██████╔╝██║ ╚████║                
-//  ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═══╝                
-                                                                          
+//  ██████╗ ██████╗ ███╗   ███╗███╗   ███╗ ██████╗ ███╗   ██╗
+// ██╔════╝██╔═══██╗████╗ ████║████╗ ████║██╔═══██╗████╗  ██║
+// ██║     ██║   ██║██╔████╔██║██╔████╔██║██║   ██║██╔██╗ ██║
+// ██║     ██║   ██║██║╚██╔╝██║██║╚██╔╝██║██║   ██║██║╚██╗██║
+// ╚██████╗╚██████╔╝██║ ╚═╝ ██║██║ ╚═╝ ██║╚██████╔╝██║ ╚████║
+//  ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═══╝
+
 // ███████╗██╗   ██╗███╗   ██╗ ██████╗████████╗██╗ ██████╗ ███╗   ██╗███████╗
 // ██╔════╝██║   ██║████╗  ██║██╔════╝╚══██╔══╝██║██╔═══██╗████╗  ██║██╔════╝
 // █████╗  ██║   ██║██╔██╗ ██║██║        ██║   ██║██║   ██║██╔██╗ ██║███████╗
@@ -22,22 +22,23 @@ import '../index.dart';
 // ██║     ╚██████╔╝██║ ╚████║╚██████╗   ██║   ██║╚██████╔╝██║ ╚████║███████║
 // ╚═╝      ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝
 
-/// ## loadDummyData
+
+/// ## loadConfig
 /// *__Method load local json file as dummy data__*
 ///
 ///### Uses:
 /// ```dart
-///  await loadDummyData("countries");
+///  await loadConfig("countries");
 /// ```
-loadDummyData(key) async {
+loadConfig(key) async {
   try {
     var result = await rootBundle.loadString("assets/data/$key.json");
-    setContext(key, json.decode(result));
+    globalConfig = {...globalConfig, ...json.decode(result)};
   } catch (e) {
     log(e);
   }
 }
-
+var globalConfig = {};
 /// ## getDateValue
 /// *__Method to get a Date Value from memory__*
 ///
@@ -394,7 +395,6 @@ List<DataColumn> getHeader(context, data, columns) {
 
   return header;
 }
- 
 
 /// ## getTimeStringFromDouble
 /// *__Method to get a time value in string format from a decimal value__*

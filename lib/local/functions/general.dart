@@ -25,7 +25,7 @@ import 'package:yaml/yaml.dart';
 // ██║     ╚██████╔╝██║ ╚████║╚██████╗   ██║   ██║╚██████╔╝██║ ╚████║███████║
 // ╚═╝      ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝
 
-/// ## loadDummyData
+/// ## loadConfig
 /// *__Method to set data to context__*
 ///
 ///### Uses:
@@ -39,7 +39,7 @@ setContext(key, value) {
   log(globalctx.context.value);
 }
 
-/// ## loadDummyData
+/// ## loadConfig
 /// *__Method to get data from context__*
 ///
 ///### Uses:
@@ -178,4 +178,114 @@ Future sendPollData(data) async {
   } else {
     log(res["message"]);
   }
+}
+
+listenChannel(channel) {
+  channel.stream.listen((datas) {
+    datas = datas.split("\n");
+    for (var data in datas) {
+      if (data.toString().contains("command")) {
+        var command = data.toString().split(":")[1];
+        if (command == "pause") {
+          countDownController.value.pause();
+        }
+        if (command == "start") {
+          countDownController.value.resume();
+        }
+        if (command == "restart") {
+          countDownController.value.restart(initialPosition: 0);
+        }
+        if (command == "reset") {
+          countDownController.value.restart(initialPosition: 0);
+          countDownController.value.pause();
+        }
+        if (command == "timer") {
+          var newVal = data.toString().split(":")[2];
+          duration.value =
+              Duration(hours: 0, minutes: int.parse(newVal.toString()));
+          countDownController.value.restart(initialPosition: 0);
+          countDownController.value.pause();
+        }
+        if (command == "cards") {
+          List<int> newData = [];
+          var newVal = data.toString().split(":")[2].toString().split(",");
+          for (var element in newVal) {
+            newData.add(int.parse(element.toString()));
+          }
+          cards.value = newData;
+          updateCards();
+        }
+        if (command == "mensaje") {
+          var newmensaje = data.toString().split(":")[2];
+          mensaje.value = newmensaje;
+        }
+        if (command == "acumulado") {
+          acumulado.value = data.toString().split(":")[2];
+        }
+        if (command == "mesa") {
+          mesa.value = data.toString().split(":")[2];
+        }
+        if (command == "silla") {
+          silla.value = data.toString().split(":")[2];
+        }
+        if (command == "mano") {
+          mano.value = data.toString().split(":")[2];
+        }
+        if (command == "velocidad") {
+          velocidad.value = int.parse(data.toString().split(":")[2]);
+        }
+        if (command == "tamanio") {
+          tamanio.value = int.parse(data.toString().split(":")[2]);
+        }
+      }
+    }
+  });
+}
+
+updateCards() {
+  cardImages.value = <Widget>[];
+  for (var i = 0; i < 5; i++) {
+    var cardCode = cards.value[i];
+    var description = "";
+    var cardDescription = cardsCatalog
+        .firstWhere((card) => card["code"].toString() == cardCode.toString());
+    if (cardDescription == null) {
+      description = "Hidden";
+    } else {
+      description = cardDescription["description"].toString();
+    }
+
+    cardImages.value.add(Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Container(
+        // color: Colors.white,
+        width: Get.width * 0.16,
+        height: Get.height * 0.3,
+        child: Image.asset(
+          "assets/images/cards/$description.png",
+          width: Get.width * 0.3,
+          height: Get.height * 0.3,
+        ),
+      ),
+    ));
+  }
+}
+
+sendCards() {
+  var value = cards.value.join(",");
+  var command = 'command:cards:$value';
+  globalctx.channel.sink.add(command);
+}
+
+sendData() {
+  globalctx.channel.sink.add('command:mano:${mano.value}');
+  globalctx.channel.sink.add('command:mesa:${mesa.value}');
+  globalctx.channel.sink.add('command:silla:${silla.value}');
+  globalctx.channel.sink.add('command:acumulado:${acumulado.value}');
+  globalctx.channel.sink.add('command:mensaje:${mensaje.value}');
+  globalctx.channel.sink.add('command:velocidad:${velocidad.value}');
+  globalctx.channel.sink.add('command:tamanio:${tamanio.value}');
+  sendCards();
+  globalctx.channel.sink.add('command:timer:${duration.value.inMinutes}');
+  globalctx.channel.sink.add('command:reset');
 }

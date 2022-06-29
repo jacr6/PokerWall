@@ -26,7 +26,7 @@ async def main(server, port):
 
 def start():
     config = ""
-    with open('assets/config.json') as config_file:
+    with open('assets/data/config.json') as config_file:
         config = json.load(config_file)
     server = config["server"] or "localhost"
     port = config["port"] or 5000

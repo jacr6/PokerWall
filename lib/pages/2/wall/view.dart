@@ -7,8 +7,14 @@ import 'widgets/index.dart';
 class WallPage extends GetView<WallController> {
   WallPage({Key? key}) : super(key: key) {
     listenChannel(channel);
+    loadConfig("config");
+    var websocket = globalConfig["websocket"]??"localhost";
+    var port = globalConfig["port"]??5000;
+    channel = WebSocketChannel.connect(
+      Uri.parse("ws://$websocket:$port/echo"),
+    );
   }
-  final channel = WebSocketChannel.connect(
+  var channel = WebSocketChannel.connect(
     Uri.parse('ws://localhost:5000/echo'),
   );
   Widget _buildView(BuildContext context) {

@@ -231,8 +231,17 @@ listenChannel(channel) {
         if (command == "silla") {
           silla.value = data.toString().split(":")[2];
         }
-        if (command == "mano") {
-          mano.value = data.toString().split(":")[2];
+        if (command == "real") {
+          real.value = data.toString().split(":")[2];
+        }
+        if (command == "color") {
+          color.value = data.toString().split(":")[2];
+        }
+        if (command == "full") {
+          full.value = data.toString().split(":")[2];
+        }
+        if (command == "poker") {
+          poker.value = data.toString().split(":")[2];
         }
         if (command == "velocidad") {
           velocidad.value = int.parse(data.toString().split(":")[2]);
@@ -281,7 +290,10 @@ sendCards() {
 }
 
 sendData() {
-  globalctx.channel.sink.add('command:mano:${mano.value}');
+  globalctx.channel.sink.add('command:real:${real.value}');
+  globalctx.channel.sink.add('command:color:${color.value}');
+  globalctx.channel.sink.add('command:full:${full.value}');
+  globalctx.channel.sink.add('command:poker:${poker.value}');
   globalctx.channel.sink.add('command:mesa:${mesa.value}');
   globalctx.channel.sink.add('command:silla:${silla.value}');
   globalctx.channel.sink.add('command:acumulado:${acumulado.value}');

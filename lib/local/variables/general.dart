@@ -20,6 +20,19 @@ String formattedDate = DateFormat('yyyy-MM-dd – kk:mm').format(DateTime.now())
 var isRunning = false.obs;
 var duration = Rx(Duration(hours: 0, minutes: 10, seconds: 0));
 var mesa = "".obs;
+var realHand =
+    ["Corazon_10", "Corazon_11", "Corazon_12", "Corazon_13", "Corazon_1"].obs;
+var colorHand =
+    ["Trebol_5", "Trebol_6", "Trebol_7", "Trebol_8", "Trebol_9"].obs;
+var fullHand =
+    ["Pica_1", "Diamante_1", "Corazon_1", "Trebol_1", "Trebol_10"].obs;
+var pokerHand =
+    ["Pica_13", "Diamante_13", "Corazon_13", "Trebol_13", "Pica_12"].obs;
+
+var real = "100".obs;
+var color = "30".obs;
+var full = "15".obs;
+var poker = "5".obs;
 var silla = "".obs;
 var mano = "".obs;
 var countDownController = Rx(CountDownController());

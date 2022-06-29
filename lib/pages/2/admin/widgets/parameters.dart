@@ -18,7 +18,7 @@ class Parameters extends StatelessWidget {
       cartas.add(
         RoundedFormDropdown(
             width: 0.2,
-            fontSize: 15,
+            fontSize: 10,
             hintText: "CARTA ${i + 1}",
             data: cardsCatalog,
             onSaved: (value) {
@@ -33,7 +33,7 @@ class Parameters extends StatelessWidget {
     return Wrap(
       children: [
         CustomFormTextInput(
-            fontSize: 15,
+            fontSize: 10,
             width: 0.2,
             label: "Velocidad Prompter: ",
             initialValue: velocidad.value,
@@ -41,7 +41,7 @@ class Parameters extends StatelessWidget {
               velocidad.value = int.parse(value.toString());
             }),
         CustomFormTextInput(
-            fontSize: 15,
+            fontSize: 10,
             width: 0.2,
             label: "Tamaño Prompter: ",
             initialValue: tamanio.value,
@@ -49,7 +49,7 @@ class Parameters extends StatelessWidget {
               tamanio.value = int.parse(value.toString());
             }),
         CustomFormTextInput(
-            fontSize: 15,
+            fontSize: 10,
             width: 0.2,
             label: "JackPot: ",
             initialValue: acumulado.value,
@@ -57,7 +57,39 @@ class Parameters extends StatelessWidget {
               acumulado.value = value;
             }),
         CustomFormTextInput(
-            fontSize: 15,
+            fontSize: 10,
+            width: 0.2,
+            label: "EscaleraReal: ",
+            initialValue: real.value,
+            onChange: (value) {
+              real.value = value;
+            }),
+        CustomFormTextInput(
+            fontSize: 10,
+            width: 0.2,
+            label: "EscaleraColor: ",
+            initialValue: color.value,
+            onChange: (value) {
+              color.value = value;
+            }),
+        CustomFormTextInput(
+            fontSize: 10,
+            width: 0.2,
+            label: "FullHouse: ",
+            initialValue: full.value,
+            onChange: (value) {
+              full.value = value;
+            }),
+        CustomFormTextInput(
+            fontSize: 10,
+            width: 0.2,
+            label: "Poker: ",
+            initialValue: poker.value,
+            onChange: (value) {
+              poker.value = value;
+            }),
+        CustomFormTextInput(
+            fontSize: 10,
             width: 0.2,
             label: "Tiempo: ",
             initialValue: duration.value.inMinutes,
@@ -70,7 +102,7 @@ class Parameters extends StatelessWidget {
             }),
         CustomFormTextInput(
             maxLines: 1000,
-            fontSize: 15,
+            fontSize: 10,
             width: 0.5,
             height: 0.2,
             label: "Mensajes: ",
@@ -82,7 +114,7 @@ class Parameters extends StatelessWidget {
         Row(
           children: [
             RoundedFormDropdown(
-                fontSize: 15,
+                fontSize: 10,
                 hintText: "MESA",
                 data: mesaCatalog,
                 onSaved: (value) {
@@ -100,7 +132,7 @@ class Parameters extends StatelessWidget {
                       .toString();
                 }),
             RoundedFormDropdown(
-                fontSize: 15,
+                fontSize: 10,
                 hintText: "SILLA",
                 data: sillaCatalog,
                 onSaved: (value) {
@@ -118,7 +150,7 @@ class Parameters extends StatelessWidget {
                       .toString();
                 }),
             RoundedFormDropdown(
-                fontSize: 15,
+                fontSize: 10,
                 hintText: "TIPO DE MANO",
                 data: manoCatalog,
                 onSaved: (value) {

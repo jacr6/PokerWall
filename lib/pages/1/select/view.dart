@@ -20,6 +20,7 @@ GetBuilder<SelectController> _buildSelectFormPage(
   return GetBuilder<SelectController>(
     id: 'Select_form_page',
     builder: (controller) => ContentLayoutWidget(
+        height: 0.8,
         background: "assets/images/1x/resume.png",
         child: SelectFormPage(ctrl: controller),
         text: ''),

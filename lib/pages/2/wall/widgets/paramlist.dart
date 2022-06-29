@@ -20,7 +20,6 @@ class ParamListWidget extends StatelessWidget {
             child: Column(
               children: [
                 MensajeWidget(label: "JackPot: ", value: acumulado.value),
-                MensajeWidget(label: "Mano: ", value: mano.value),
                 MensajeWidget(label: "Mesa: ", value: mesa.value),
                 MensajeWidget(label: "Silla: ", value: silla.value),
               ],

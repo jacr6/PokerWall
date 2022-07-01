@@ -19,7 +19,7 @@ async def echo(websocket):
 
 
 async def handler(websocket):
-    if(CLIENTS.contains(websocket)):
+    if(websocket not in CLIENTS):
         websocket.send("\n".join(MESAGES))
     CLIENTS.add(websocket)
     await echo(websocket)

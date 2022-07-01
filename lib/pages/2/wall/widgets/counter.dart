@@ -1,6 +1,7 @@
 import 'package:countdown_progress_indicator/countdown_progress_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sweetalertv2/sweetalertv2.dart';
 import '../../../../index.dart';
 
 class Counter extends StatelessWidget {

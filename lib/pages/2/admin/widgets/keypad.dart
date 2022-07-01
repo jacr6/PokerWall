@@ -62,7 +62,7 @@ class KeyPad extends StatelessWidget {
                 } catch (e) {
                   log(e);
                 } finally {
-                  shell2.run(" chromium http://localhost:$randPort/#/Wall");
+                  shell2.run("chromium http://localhost:$randPort/#/Wall");
                   globalctx.channel.sink
                       .add('command:timer:${duration.value.inMinutes}');
                 }

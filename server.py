@@ -7,14 +7,20 @@ import json
 
 
 CLIENTS = set()
+MESAGES = []
 
 
 async def echo(websocket):
     async for message in websocket:
+        MESAGES.append(message)
+        if MESAGES.length > 10:
+            MESAGES = MESAGES[-10:]
         websockets.broadcast(CLIENTS, message)
 
 
 async def handler(websocket):
+    if(CLIENTS.contains(websocket)):
+        websocket.send("\n".join(MESAGES))
     CLIENTS.add(websocket)
     await echo(websocket)
 

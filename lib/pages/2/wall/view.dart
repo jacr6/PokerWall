@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'widgets/index.dart';
 
 class WallPage extends GetView<WallController> {
-   WallPage({Key? key}) : super(key: key) {
+  WallPage({Key? key}) : super(key: key) {
     listenChannel(channel);
     loadConfig("config");
     var websocket = globalConfig["websocket"] ?? "localhost";
@@ -16,7 +16,8 @@ class WallPage extends GetView<WallController> {
   }
   var channel = WebSocketChannel.connect(
     Uri.parse('ws://localhost:5000/echo'),
-  );  Widget _buildView(BuildContext context) {
+  );
+  Widget _buildView(BuildContext context) {
     updateCards();
 
     return ContentLayoutWidget(
@@ -44,8 +45,8 @@ class WallPage extends GetView<WallController> {
                                 Manos(card: "Escalera_Real", value: real.value),
                                 Manos(
                                     card: "Escalera_Color", value: color.value),
-                                Manos(card: "Full_House", value: full.value),
                                 Manos(card: "Poker", value: poker.value),
+                                Manos(card: "Full_House", value: full.value),
                               ],
                             ),
                           ),

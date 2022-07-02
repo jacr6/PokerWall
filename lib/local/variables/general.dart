@@ -7,7 +7,6 @@ import '../../index.dart';
 import '../../pages/2/wall/widgets/counter.dart';
 import 'package:sm_websocket/sm_websocket.dart';
 
-
 var secciones = findCatalog("SECCION");
 var marcas = findCatalog("MARCA");
 var tipos = findCatalog("TIPO");
@@ -33,8 +32,8 @@ var pokerHand =
 
 var real = "100".obs;
 var color = "30".obs;
-var full = "15".obs;
-var poker = "5".obs;
+var poker = "15".obs;
+var full = "5".obs;
 var silla = "".obs;
 var mano = "".obs;
 var countDownController = Rx(CountDownController());
@@ -140,5 +139,3 @@ var cardsCatalog = [
   {"code": 52, "description": "Diamante_13"},
   {"code": 53, "description": "Hidden"},
 ];
-
-

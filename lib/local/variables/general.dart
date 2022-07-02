@@ -5,6 +5,8 @@ import 'package:intl/intl.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import '../../index.dart';
 import '../../pages/2/wall/widgets/counter.dart';
+import 'package:sm_websocket/sm_websocket.dart';
+
 
 var secciones = findCatalog("SECCION");
 var marcas = findCatalog("MARCA");
@@ -138,3 +140,5 @@ var cardsCatalog = [
   {"code": 52, "description": "Diamante_13"},
   {"code": 53, "description": "Hidden"},
 ];
+
+

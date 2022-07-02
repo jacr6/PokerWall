@@ -1,7 +1,6 @@
- 
-import 'package:get/get.dart'; 
+import 'package:get/get.dart';
+import 'package:sm_websocket/sm_websocket.dart';
 
-class AdminState extends GetXState {
- 
- 
-}
+import '../../../index.dart';
+
+class AdminState extends GetXState {}

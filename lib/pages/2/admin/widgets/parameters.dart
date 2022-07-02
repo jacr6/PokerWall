@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sm_websocket/sm_websocket.dart';
 import '../../../../index.dart';
 import 'index.dart';
 
-class Parameters extends StatelessWidget {
+class Parameters extends StatefulWidget {
   Parameters({
     Key? key,
-  }) : super(key: key);
+  }) : super(key: key) {
+    ws.open("ws://127.0.0.1:5000/echo");
+  }
 
+  @override
+  State<Parameters> createState() => _ParametersState();
+  IWebSocket ws = WebSocket();
+}
+
+class _ParametersState extends State<Parameters> {
   @override
   Widget build(BuildContext context) {
     var cartas = <Widget>[];
@@ -29,6 +38,9 @@ class Parameters extends StatelessWidget {
     }
 
     return Obx(() {
+      listenSocket(widget.ws);
+      print(mensaje.value);
+      print("RENDER");
       return Wrap(
         children: [
           CustomFormTextInput(

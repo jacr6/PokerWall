@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_function_declarations_over_variables, import_of_legacy_library_into_null_safe
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -190,77 +191,99 @@ listenChannel(channel) {
 listenSocket(socket) {
   log("LISTEN SOCKET");
   socket.onMessage((datas) {
-    updateDatas(datas);
+    updateDataValues(datas);
   });
+}
+
+updateCounter(data, countDownController) {
+  var command = data.toString().split(":")[1];
+  if (command == "pause") {
+    countDownController.value.pause();
+  }
+  if (command == "start") {
+    countDownController.value.resume();
+  }
+  if (command == "restart") {
+    countDownController.value.restart(initialPosition: 0);
+  }
+  if (command == "reset") {
+    countDownController.value.restart(initialPosition: 0);
+    countDownController.value.pause();
+  }
+  if (command == "timer") {
+    var newVal = data.toString().split(":")[2];
+    duration.value = Duration(hours: 0, minutes: int.parse(newVal.toString()));
+    countDownController.value.restart(initialPosition: 0);
+    countDownController.value.pause();
+    counter.value = Obx(() => Counter(
+          controller: countDownController.value,
+        ));
+  }
+}
+
+updateValues(data) {
+  if (data.contains(":")) {
+    var command = data.toString().split(":")[1];
+    if (command == "cards") {
+      List<int> newData = [];
+      var newVal = data.toString().split(":")[2].toString().split(",");
+      for (var element in newVal) {
+        newData.add(int.parse(element.toString()));
+      }
+      cards.value = newData;
+      updateCards();
+    }
+    if (command == "mensaje") {
+      var newmensaje = data.toString().split(":")[2];
+      mensaje.value = newmensaje;
+    }
+    if (command == "acumulado") {
+      acumulado.value = data.toString().split(":")[2];
+    }
+    if (command == "mesa") {
+      mesa.value = data.toString().split(":")[2];
+    }
+    if (command == "silla") {
+      silla.value = data.toString().split(":")[2];
+    }
+    if (command == "real") {
+      real.value = data.toString().split(":")[2];
+    }
+    if (command == "color") {
+      color.value = data.toString().split(":")[2];
+    }
+    if (command == "full") {
+      full.value = data.toString().split(":")[2];
+    }
+    if (command == "poker") {
+      poker.value = data.toString().split(":")[2];
+    }
+    if (command == "velocidad") {
+      velocidad.value = int.parse(data.toString().split(":")[2]);
+    }
+    if (command == "tamanio") {
+      tamanio.value = int.parse(data.toString().split(":")[2]);
+    }
+  }
 }
 
 updateDatas(datas) {
   datas = datas.split("\n");
   for (var data in datas) {
     if (data.toString().contains("command")) {
-      var command = data.toString().split(":")[1];
-      if (command == "pause") {
-        countDownController.value.pause();
-      }
-      if (command == "start") {
-        countDownController.value.resume();
-      }
-      if (command == "restart") {
-        countDownController.value.restart(initialPosition: 0);
-      }
-      if (command == "reset") {
-        countDownController.value.restart(initialPosition: 0);
-        countDownController.value.pause();
-      }
-      if (command == "timer") {
-        var newVal = data.toString().split(":")[2];
-        duration.value =
-            Duration(hours: 0, minutes: int.parse(newVal.toString()));
-        countDownController.value.restart(initialPosition: 0);
-        countDownController.value.pause();
-        counter.value = Obx(() => Counter(
-              controller: countDownController.value,
-            ));
-      }
-      if (command == "cards") {
-        List<int> newData = [];
-        var newVal = data.toString().split(":")[2].toString().split(",");
-        for (var element in newVal) {
-          newData.add(int.parse(element.toString()));
-        }
-        cards.value = newData;
-        updateCards();
-      }
-      if (command == "mensaje") {
-        var newmensaje = data.toString().split(":")[2];
-        mensaje.value = newmensaje;
-      }
-      if (command == "acumulado") {
-        acumulado.value = data.toString().split(":")[2];
-      }
-      if (command == "mesa") {
-        mesa.value = data.toString().split(":")[2];
-      }
-      if (command == "silla") {
-        silla.value = data.toString().split(":")[2];
-      }
-      if (command == "real") {
-        real.value = data.toString().split(":")[2];
-      }
-      if (command == "color") {
-        color.value = data.toString().split(":")[2];
-      }
-      if (command == "full") {
-        full.value = data.toString().split(":")[2];
-      }
-      if (command == "poker") {
-        poker.value = data.toString().split(":")[2];
-      }
-      if (command == "velocidad") {
-        velocidad.value = int.parse(data.toString().split(":")[2]);
-      }
-      if (command == "tamanio") {
-        tamanio.value = int.parse(data.toString().split(":")[2]);
+      updateCounter(data, countDownController);
+
+      updateValues(data);
+    }
+  }
+}
+
+updateDataValues(datas) {
+  if (datas != null) {
+    datas = datas.split("\n");
+    for (var data in datas) {
+      if (data.toString().contains("command")) {
+        updateValues(data);
       }
     }
   }

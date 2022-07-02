@@ -355,6 +355,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.6.1"
+  getsocket:
+    dependency: "direct main"
+    description:
+      name: getsocket
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1"
   glob:
     dependency: transitive
     description:
@@ -682,6 +689,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  sm_websocket:
+    dependency: "direct main"
+    description:
+      name: sm_websocket
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.6"
   source_map_stack_trace:
     dependency: transitive
     description:

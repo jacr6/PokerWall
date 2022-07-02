@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 
 void main() async {
   try {
+  
     HttpOverrides.global = common_behavior.MyHttpOverrides();
     WidgetsFlutterBinding.ensureInitialized();
     SystemChrome.setPreferredOrientations(

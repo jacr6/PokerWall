@@ -14,8 +14,8 @@ async def echo(websocket):
     global MESAGES
     async for message in websocket:
         MESAGES.append(message)
-        if len(MESAGES) > 10:
-            MESAGES = MESAGES[-10:]
+        if len(MESAGES) > 15:
+            MESAGES = MESAGES[-15:]
         websockets.broadcast(CLIENTS, message)
 
 

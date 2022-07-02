@@ -62,8 +62,9 @@ flutter:
     - assets/
     - assets/data/
     - assets/images/
-    - assets/images/1x/ 
-    - assets/images/cards/ 
+    - assets/images/1x/
+    - assets/images/cards/
+    - assets/images/Cantos/
   generate: true
   uses-material-design: true
   # fonts:

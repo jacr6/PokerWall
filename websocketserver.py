@@ -11,16 +11,18 @@ MESAGES = []
 
 
 async def echo(websocket):
+    global MESAGES
     async for message in websocket:
         MESAGES.append(message)
-        if MESAGES.length > 10:
+        if len(MESAGES) > 10:
             MESAGES = MESAGES[-10:]
         websockets.broadcast(CLIENTS, message)
 
 
 async def handler(websocket):
-    if(websocket not in CLIENTS):
-        websocket.send("\n".join(MESAGES))
+    global CLIENTS
+    if(websocket not in CLIENTS and len(MESAGES) > 0):
+        await websocket.send("\n".join(MESAGES))
     CLIENTS.add(websocket)
     await echo(websocket)
 

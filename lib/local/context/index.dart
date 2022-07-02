@@ -15,6 +15,7 @@ class LocalContext extends Context {
     channel = WebSocketChannel.connect(
       Uri.parse("ws://$websocket:$port/echo"),
     );
+    listenChannel(channel);
   }
 
   RxMap<String, dynamic> memory = {

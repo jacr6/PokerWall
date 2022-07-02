@@ -32,7 +32,7 @@ dependencies:
   process_run: ^0.12.3+2
   web_socket_channel: ^2.2.0
   marquee_text: ^2.5.0+1
-  sweetalertv2: ^0.0.2
+  sweetalertv2: ^0.0.2 
 
 dev_dependencies:
   flutter_launcher_icons:

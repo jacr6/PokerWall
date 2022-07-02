@@ -5,8 +5,6 @@ import 'package:web_socket_channel/web_socket_channel.dart';
 import 'common/behavior.dart' as common_behavior;
 import 'package:flutter/material.dart';
 import '../index.dart';
-import 'index.dart';
-
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 

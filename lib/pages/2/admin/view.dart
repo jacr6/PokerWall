@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:web_socket_channel/web_socket_channel.dart';
 import '../../../index.dart';
 import 'package:get/get.dart';
 import 'widgets/index.dart';
 
 class AdminPage extends GetView<AdminController> {
   AdminPage({Key? key}) : super(key: key);
-
   Widget _buildView(BuildContext context) {
     return ContentLayoutWidget(
         background: "assets/images/1x/fondo.jpg",

@@ -8,16 +8,7 @@ class LocalContext extends Context {
     Uri.parse("ws://localhost:5000/echo"),
   );
 
-  LocalContext() {
-    loadConfig("config");
-    var websocket = globalConfig["websocket"] ?? "localhost";
-    var port = globalConfig["port"] ?? 5000;
-    channel = WebSocketChannel.connect(
-      Uri.parse("ws://$websocket:$port/echo"),
-    );
-    listenChannel(channel);
-  }
-
+ 
   RxMap<String, dynamic> memory = {
     "header": {},
     "questions": {},

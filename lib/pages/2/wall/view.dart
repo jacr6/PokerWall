@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hnog_pokerwall/main.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import '../../../index.dart';
 import 'package:get/get.dart';
@@ -6,17 +7,13 @@ import 'widgets/index.dart';
 
 class WallPage extends GetView<WallController> {
   WallPage({Key? key}) : super(key: key) {
-    listenChannel(channel);
-    loadConfig("config");
-    var websocket = globalConfig["websocket"] ?? "localhost";
-    var port = globalConfig["port"] ?? 5000;
     channel = WebSocketChannel.connect(
-      Uri.parse("ws://$websocket:$port/echo"),
+      Uri.parse(websocketserver),
     );
+    listenChannel(channel);
   }
-  var channel = WebSocketChannel.connect(
-    Uri.parse('ws://localhost:5000/echo'),
-  );
+  late WebSocketChannel channel;
+
   Widget _buildView(BuildContext context) {
     updateCards();
 

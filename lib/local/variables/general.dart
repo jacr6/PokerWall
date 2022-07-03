@@ -7,6 +7,8 @@ import '../../index.dart';
 import '../../pages/2/wall/widgets/counter.dart';
 import 'package:sm_websocket/sm_websocket.dart';
 
+ 
+ 
 var secciones = findCatalog("SECCION");
 var marcas = findCatalog("MARCA");
 var tipos = findCatalog("TIPO");

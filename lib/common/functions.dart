@@ -22,23 +22,26 @@ import '../index.dart';
 // ██║     ╚██████╔╝██║ ╚████║╚██████╗   ██║   ██║╚██████╔╝██║ ╚████║███████║
 // ╚═╝      ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝
 
-
-/// ## loadConfig
+/// ## loadServer
 /// *__Method load local json file as dummy data__*
 ///
 ///### Uses:
 /// ```dart
-///  await loadConfig("countries");
+///  await loadServer("countries");
 /// ```
-loadConfig(key) async {
+loadServer() async {
   try {
-    var result = await rootBundle.loadString("assets/data/$key.json");
-    globalConfig = {...globalConfig, ...json.decode(result)};
+    var result = await rootBundle.loadString("assets/data/config.json");
+    var config = json.decode(result) as Map;
+    String pokerwallserver = "ws://${config['websocket']}:${config['port']}";
+    return pokerwallserver;
   } catch (e) {
     log(e);
   }
 }
+
 var globalConfig = {};
+
 /// ## getDateValue
 /// *__Method to get a Date Value from memory__*
 ///

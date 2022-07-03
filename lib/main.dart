@@ -8,18 +8,18 @@ import '../index.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
+var websocketserver = "ws://localhost:5000";
 void main() async {
   try {
-  
     HttpOverrides.global = common_behavior.MyHttpOverrides();
     WidgetsFlutterBinding.ensureInitialized();
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-
+    websocketserver = await loadServer();
     var pages = AppPages.pages;
     PRegistry registry =
         routes.toList().firstWhere((element) => element.name == "/Splash");
-    loadConfig("config");
+    
     runApp(GetMaterialApp(
         scrollBehavior: common_behavior.ScrollBehavior(),
         debugShowCheckedModeBanner: false,

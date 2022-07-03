@@ -26,7 +26,7 @@ import 'package:yaml/yaml.dart';
 // ██║     ╚██████╔╝██║ ╚████║╚██████╗   ██║   ██║╚██████╔╝██║ ╚████║███████║
 // ╚═╝      ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝
 
-/// ## loadConfig
+/// ## loadServer
 /// *__Method to set data to context__*
 ///
 ///### Uses:
@@ -40,7 +40,7 @@ setContext(key, value) {
   log(globalctx.context.value);
 }
 
-/// ## loadConfig
+/// ## loadServer
 /// *__Method to get data from context__*
 ///
 ///### Uses:

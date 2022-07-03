@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sm_websocket/sm_websocket.dart';
 import '../../../../index.dart';
+import '../../../../main.dart';
 import 'index.dart';
 
 class Parameters extends StatefulWidget {
   Parameters({
     Key? key,
   }) : super(key: key) {
-    ws.open("ws://127.0.0.1:5000/echo");
+    ws.open(websocketserver);
   }
-
+  
   @override
   State<Parameters> createState() => _ParametersState();
   IWebSocket ws = WebSocket();

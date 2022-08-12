@@ -1,10 +1,11 @@
 import 'package:get/get.dart';
 
-import 'controller.dart';
+import '../../../index.dart';
 
 class AdminBinding implements Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<AdminController>(() => AdminController());
+    Get.put<AdminController>(AdminController());
+    Get.put<AdminState>(AdminState());
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hnog_pokerwall/main.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import '../../../index.dart';
 import 'package:get/get.dart';
@@ -6,17 +7,13 @@ import 'widgets/index.dart';
 
 class WallPage extends GetView<WallController> {
   WallPage({Key? key}) : super(key: key) {
-    listenChannel(channel);
-    loadConfig("config");
-    var websocket = globalConfig["websocket"] ?? "localhost";
-    var port = globalConfig["port"] ?? 5000;
     channel = WebSocketChannel.connect(
-      Uri.parse("ws://$websocket:$port/echo"),
+      Uri.parse(websocketserver),
     );
+    listenChannel(channel);
   }
-  var channel = WebSocketChannel.connect(
-    Uri.parse('ws://localhost:5000/echo'),
-  );
+  late WebSocketChannel channel;
+
   Widget _buildView(BuildContext context) {
     updateCards();
 
@@ -42,12 +39,11 @@ class WallPage extends GetView<WallController> {
                             alignment: Alignment.center,
                             child: Column(
                               children: [
-                                Manos(card: realHand.value, value: real.value),
+                                Manos(card: "Escalera_Real", value: real.value),
                                 Manos(
-                                    card: colorHand.value, value: color.value),
-                                Manos(card: fullHand.value, value: full.value),
-                                Manos(
-                                    card: pokerHand.value, value: poker.value),
+                                    card: "Escalera_Color", value: color.value),
+                                Manos(card: "Poker", value: poker.value),
+                                Manos(card: "Full_House", value: full.value),
                               ],
                             ),
                           ),
@@ -98,44 +94,24 @@ class WallPage extends GetView<WallController> {
 class Manos extends StatelessWidget {
   const Manos({
     Key? key,
-    this.card = const ["Hidden", "Hidden", "Hidden", "Hidden", "Hidden"],
+    this.card = "Poker",
     this.value = 0,
   }) : super(key: key);
   final card;
   final value;
   @override
   Widget build(BuildContext context) {
-    var size = 0.07;
+    var size = 0.15;
     return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Wrap(
+      padding: const EdgeInsets.all(0.0),
+      child: Row(
         children: [
           Image.asset(
-            "assets/images/cards/${card[0]}.png",
+            "assets/images/Cantos/$card.png",
             width: Get.width * size,
             height: Get.height * size,
           ),
-          Image.asset(
-            "assets/images/cards/${card[1]}.png",
-            width: Get.width * size,
-            height: Get.height * size,
-          ),
-          Image.asset(
-            "assets/images/cards/${card[2]}.png",
-            width: Get.width * size,
-            height: Get.height * size,
-          ),
-          Image.asset(
-            "assets/images/cards/${card[3]}.png",
-            width: Get.width * size,
-            height: Get.height * size,
-          ),
-          Image.asset(
-            "assets/images/cards/${card[4]}.png",
-            width: Get.width * size,
-            height: Get.height * size,
-          ),
-          Text("$value%",
+          Text("  $value%",
               style: KTextSytle(
                 context: context,
                 fontSize: 10,

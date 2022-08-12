@@ -30,6 +30,7 @@ class Context {
     "icons": {}.obs,
     "countries": {},
     "session": {"avatar": ''.obs},
-    "catalogs": {}.obs
+    "catalogs": {}.obs,
+    "config":{}
   }.obs);
 }

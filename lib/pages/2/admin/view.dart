@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:sm_websocket/sm_websocket.dart';
 import '../../../index.dart';
 import 'package:get/get.dart';
 import 'widgets/index.dart';
 
 class AdminPage extends GetView<AdminController> {
-  const AdminPage({Key? key}) : super(key: key);
-
+  AdminPage({Key? key}) : super(key: key) ;
+  
   Widget _buildView(BuildContext context) {
+  
     return ContentLayoutWidget(
         background: "assets/images/1x/fondo.jpg",
         child: SingleChildScrollView(

@@ -2,18 +2,13 @@ import 'package:get/get.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
 import '../../index.dart';
+import '../../main.dart';
 
 class LocalContext extends Context {
-  var channel = WebSocketChannel.connect(
-    Uri.parse("ws://localhost:5000/echo"),
-  );
-
+  late WebSocketChannel channel;
   LocalContext() {
-    loadConfig("config");
-    var websocket = globalConfig["websocket"] ?? "localhost";
-    var port = globalConfig["port"] ?? 5000;
     channel = WebSocketChannel.connect(
-      Uri.parse("ws://$websocket:$port/echo"),
+      Uri.parse(websocketserver),
     );
   }
 
